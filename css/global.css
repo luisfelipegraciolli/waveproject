@@ -1,0 +1,32 @@
+/* esse seletor se refere a TODO o html */
+:root {
+  --cor-texto: #0d1b82; /* declaracao de variavel no css */
+  --cor-fundo: #004aad;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* essa foi a fonte incluida no HTML */
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+.botao {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--cor-fundo);
+  cursor: pointer;
+}
+
+.botao:hover {
+  opacity: 0.9;
+}
+
+.botao:active {
+  background-color: var(--cor-texto);
+}
