@@ -3,24 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WaveLink Login</title>
+    <title>WaveLink - Login</title>
+    <!-- as tres linhas seguintes adicionam uma fonte externa, do site google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet" />
+    <!-- inclui o global.css pra pegar as variaveis e as configs padrao -->
+    <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/login.css" />
   </head>
   <body>
     <main>
       <div id="imagem-principal" class="div"></div>
       <div id="wrapper-form-login">
-        <h1>Login</h1>
         <form action="GET" id="form-principal">
-          <label for="usuario-input">Usuario: </label>
-          <input type="text" id="usuario-input" placeholder="Digite seu nome de usuario" />
-          
-          <label for="usuario-senha">Senha: </label>
-          <input type="password" id="usuario-senha" placeholder="Digite sua senha" />
+          <!-- aqui coloquei o LOGIN dentro da tag LEGEND,
+          que eh uma forma de os leitores de tela
+        saberem qual o titulo do formulario (acessibilidade) -->
+          <legend><h1>Login</h1></legend>
+          <!-- eu envolvi os conjuntos label+input com
+          uma div, para facilitar a estilizacao -->
+          <div class="input-label-container">
+            <div class="input-label">
+              <label for="usuario-input">Usuario: </label>
+              <input
+                required
+                type="text"
+                id="usuario-input"
+                placeholder="Digite seu nome de usuario" />
+            </div>
+            <div class="input-label">
+              <!-- mudei o id pra "senha-input",
+              pra seguir o padrao do input do usuario -->
+              <label for="senha-input">Senha: </label>
+              <input
+                required
+                type="password"
+                id="senha-input"
+                placeholder="Digite sua senha" />
+            </div>
+          </div>
 
-          <button>Entrar</button>
-        <h1>WaveLink</h1>
-
+          <!-- no global.css, criei essa classe botao pra ajudar, ja que temos muitos botoes na aplicacao. -->
+          <button class="botao">Entrar</button>
+          <!-- mudei pra footer, pois eh o rodape do form -->
+          <footer>WaveLink</footer>
         </form>
       </div>
     </main>
