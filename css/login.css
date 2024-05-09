@@ -3,38 +3,65 @@ body {
   height: 100%;
   margin: 0;
 }
-
 main {
   display: flex;
   height: 100%;
 }
-
 #imagem-principal {
   width: 50%;
-  height: 100%;
-  background: rgb(44, 0, 230);
-  background: linear-gradient(197deg, rgba(44, 0, 230, 1) 0%, rgba(0, 255, 240, 1) 100%);
+  height: 100%;  background: linear-gradient(135deg, var(--cor-texto) 0%, var(--cor-fundo) 50%);
 }
 #wrapper-form-login {
+  /* height: 100%; */
+  /*display: block;*/ /*nao precisa, div tem display block por padrao*/
   width: 50%;
+  padding: 6%;
+}
+
+#form-principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
   height: 100%;
-  display: block;
 }
 
-#wrapper-form-login h1{
-  text-align: left;
-  margin-left: 20%;
-  color: #2c00e6;
+input-label-container {
+  display: grid;
+  gap: 1rem;
 }
 
-#form-principal label, input{
-  display: block;
-  text-align: left;
-  margin-left: 20%;
-  margin-bottom: 10px;
+.input-label {
+  display: grid;
+  gap: 0.5rem;
+  color: var(--cor-texto);
 }
 
-#form-principal button{
-  margin-left: 50%;
-  margin-top: 40px;
+.input-label input {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--cor-fundo);
+  border-radius: 0.25rem;
+}
+
+.input-label input:focus {
+  outline: 1px solid var(--cor-fundo);
+}
+
+#wrapper-form-login h1 {
+  /*nao precisa alinhar e posicionar cada elemento, melhor alinhar no container*/
+  /* text-align: left;
+  margin-left: 20%; */
+  color: var(--cor-texto);
+}
+#form-principal button {
+  /*nao precisa assim */
+  /* margin-left: 50%;
+  margin-top: 40px; */
+  /* assim, alinha automaticamente no centro */
+  margin: 0 auto;
+  width: 12rem;
+}
+#form-principal footer {
+  font-size: 2.5rem;
+  color: var(--cor-texto);
 }
