@@ -9,7 +9,8 @@ main {
 }
 #imagem-principal {
   width: 50%;
-  height: 100%;  background: linear-gradient(135deg, var(--cor-texto) 0%, var(--cor-fundo) 50%);
+  height: 100%;
+  background: linear-gradient(135deg, var(--cor-texto) 0%, var(--cor-fundo) 50%);
 }
 #wrapper-form-login {
   width: 50%;
@@ -24,7 +25,7 @@ main {
   height: 100%;
 }
 
-input-label-container {
+.input-label-container {
   display: grid;
   gap: 1rem;
 }
@@ -42,10 +43,9 @@ input-label-container {
   border-radius: 0.5rem;
 }
 
-.input-label label{
+.input-label label {
   font-weight: 400;
   font-size: 1.7rem;
-
 }
 
 .input-label input:focus {
