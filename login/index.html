@@ -12,7 +12,12 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="login.css" />
-    <script src="login.js"></script>
+    <!--
+         ! esse defer na <script> eh ESSENCIAL, faz com que o JS
+         ! seja carregado somente depois do HTML. Se nao usar,
+         ! teremos problemas na manipulacao do DOM.
+    -->
+    <script defer src="login.js"></script>
   </head>
   <body>
     <main>
@@ -28,6 +33,7 @@
                 type="text"
                 id="usuario-input"
                 placeholder="Digite seu nome de usuario" />
+              <span class="mensagem-de-erro"></span>
             </div>
             <div class="input-label">
               <label for="senha-input">Senha: </label>
@@ -36,10 +42,14 @@
                 type="password"
                 id="senha-input"
                 placeholder="Digite sua senha" />
+              <span class="mensagem-de-erro"></span>
             </div>
           </div>
-          <button class="botao">Entrar</button>
-          <a id="link-mudar-senha" href="../editar-perfil/index.html">Esqueceu sua senha?</a>
+          <button class="botao" id="botao-login">Entrar</button>
+          <!-- TODO: Fazer uma pagina especifica pro "esqueci a senha" -->
+          <a id="link-mudar-senha" href="../editar-perfil/index.html"
+            >Esqueceu sua senha?</a
+          >
           <footer>WaveLink</footer>
         </form>
       </div>

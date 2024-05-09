@@ -3,15 +3,18 @@ body {
   height: 100%;
   margin: 0;
 }
+
 main {
   display: flex;
   height: 100%;
 }
+
 #imagem-principal {
   width: 50%;
   height: 100%;
   background: linear-gradient(135deg, var(--cor-texto) 0%, var(--cor-fundo) 50%);
 }
+
 #wrapper-form-login {
   width: 50%;
   padding: 6%;
@@ -43,30 +46,37 @@ main {
   border-radius: 0.5rem;
 }
 
+.input-label input:focus {
+  outline: 1px solid var(--cor-fundo);
+}
+
 .input-label label {
   font-weight: 400;
   font-size: 1.7rem;
 }
 
-.input-label input:focus {
-  outline: 1px solid var(--cor-fundo);
+.mensagem-de-erro {
+  color: red;
+  font-size: 0.7rem;
 }
 
 #wrapper-form-login h1 {
   font-size: 3rem;
   color: var(--cor-texto);
 }
+
 #form-principal button {
   margin: 0 auto;
   width: 11rem;
   height: 2.8rem;
   font-size: 20px;
 }
+
 #form-principal footer {
   font-size: 2.5rem;
   color: var(--cor-texto);
 }
 
-#link-mudar-senha{
+#link-mudar-senha {
   text-align: center;
 }
