@@ -12,15 +12,28 @@
       <div id="wrapper-form-login">
         <h1>Login</h1>
         <form action="GET" id="form-principal">
-          <label for="usuario-input">Usuario: </label>
-          <input type="text" id="usuario-input" placeholder="Digite seu nome de usuario" />
+          <legend><h1>Login</h1></legend>
+          <div class="input-label-container">
+            <div class="input-label">
+              <label for="usuario-input">Usuario: </label>
+              <input
+                required
+                type="text"
+                id="usuario-input"
+                placeholder="Digite seu nome de usuario" />
+            </div>
+            <div class="input-label">
+              <label for="senha-input">Senha: </label>
+              <input
+                required
+                type="password"
+                id="senha-input"
+                placeholder="Digite sua senha" />
+            </div>
+          </div>
 
-          <label for="usuario-senha">Senha: </label>
-          <input type="password" id="usuario-senha" placeholder="Digite sua senha" />
-
-          <button>Entrar</button>
-        <h1>WaveLink</h1>
-
+          <button class="botao">Entrar</button>
+          <footer>WaveLink</footer>
         </form>
       </div>
     </main>
