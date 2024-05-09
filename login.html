@@ -19,12 +19,7 @@
       <div id="imagem-principal" class="div"></div>
       <div id="wrapper-form-login">
         <form action="GET" id="form-principal">
-          <!-- aqui coloquei o LOGIN dentro da tag LEGEND,
-          que eh uma forma de os leitores de tela
-        saberem qual o titulo do formulario (acessibilidade) -->
           <legend><h1>Login</h1></legend>
-          <!-- eu envolvi os conjuntos label+input com
-          uma div, para facilitar a estilizacao -->
           <div class="input-label-container">
             <div class="input-label">
               <label for="usuario-input">Usuario: </label>
@@ -35,8 +30,6 @@
                 placeholder="Digite seu nome de usuario" />
             </div>
             <div class="input-label">
-              <!-- mudei o id pra "senha-input",
-              pra seguir o padrao do input do usuario -->
               <label for="senha-input">Senha: </label>
               <input
                 required
@@ -46,9 +39,7 @@
             </div>
           </div>
 
-          <!-- no global.css, criei essa classe botao pra ajudar, ja que temos muitos botoes na aplicacao. -->
           <button class="botao">Entrar</button>
-          <!-- mudei pra footer, pois eh o rodape do form -->
           <footer>WaveLink</footer>
         </form>
       </div>
