@@ -66,3 +66,7 @@ main {
   font-size: 2.5rem;
   color: var(--cor-texto);
 }
+
+#link-mudar-senha{
+  text-align: center;
+}
