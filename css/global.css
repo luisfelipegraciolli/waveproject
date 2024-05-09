@@ -1,6 +1,5 @@
-/* esse seletor se refere a TODO o html */
 :root {
-  --cor-texto: #0d1b82; /* declaracao de variavel no css */
+  --cor-texto: #0d1b82;
   --cor-fundo: #004aad;
 }
 
@@ -8,7 +7,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* essa foi a fonte incluida no HTML */
   font-family: "Hanken Grotesk", sans-serif;
 }
 
