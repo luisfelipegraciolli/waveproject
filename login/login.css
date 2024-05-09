@@ -9,7 +9,8 @@ main {
 }
 #imagem-principal {
   width: 50%;
-  height: 100%;  background: linear-gradient(135deg, var(--cor-texto) 0%, var(--cor-fundo) 50%);
+  height: 100%;
+  background: linear-gradient(135deg, var(--cor-texto) 0%, var(--cor-fundo) 50%);
 }
 #wrapper-form-login {
   width: 50%;
@@ -24,7 +25,7 @@ main {
   height: 100%;
 }
 
-input-label-container {
+.input-label-container {
   display: grid;
   gap: 1rem;
 }
@@ -33,12 +34,18 @@ input-label-container {
   display: grid;
   gap: 0.5rem;
   color: var(--cor-texto);
+  margin-bottom: 0.5rem;
 }
 
 .input-label input {
   padding: 0.6rem 0.8rem;
-  border: 1px solid var(--cor-fundo);
-  border-radius: 0.25rem;
+  border: 0.9px solid var(--cor-fundo);
+  border-radius: 0.5rem;
+}
+
+.input-label label {
+  font-weight: 400;
+  font-size: 1.7rem;
 }
 
 .input-label input:focus {
@@ -46,11 +53,14 @@ input-label-container {
 }
 
 #wrapper-form-login h1 {
+  font-size: 3rem;
   color: var(--cor-texto);
 }
 #form-principal button {
   margin: 0 auto;
-  width: 12rem;
+  width: 11rem;
+  height: 2.8rem;
+  font-size: 20px;
 }
 #form-principal footer {
   font-size: 2.5rem;
