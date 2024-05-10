@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WaveLink - Redefinir Senha</title>
+    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="./redefinir-senha.css" />
+    <!--
+         ! esse defer na <script> eh ESSENCIAL, faz com que o JS
+         ! seja carregado somente depois do HTML. Se nao usar,
+         ! teremos problemas na manipulacao do DOM.
+    -->
+    <script defer src="frase-seguranca.js"></script>
+  </head>
+  <body>
+    <h1 class="titulo">Redefina sua senha</h1>
+
+    <div id="div-principal">
+        <!--TODO: determinar a mensagem a partir do local storage da pergunta -->
+        <div id="wrapper-pergunta">
+          <h2 id="pergunta-de-seguranca">Qual o nome do seu primeiro pet?</h2>
+          <input class="input" type="text" placeholder="Resposta...">
+        </div>
+        <!-- TODO: Jogar para ./redefine.html ao clicar-->
+        <button class="botao" onclick="verificaPergunta()">Redefinir senha</button>
+        <footer class="logo">WaveLink</footer>
+    </div>
+  </body>
+</html>

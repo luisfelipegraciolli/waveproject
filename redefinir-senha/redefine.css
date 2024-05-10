@@ -1,0 +1,49 @@
+.titulo {
+  text-align: center;
+  margin-top: 2.1875rem;
+  margin-bottom: 4.4375rem;
+}
+
+#div-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.1875rem;
+}
+
+.input {
+  width: 100%;
+  height: 3rem;
+  color: var(--cor-texto);
+}
+
+.input::placeholder {
+  color: var(--cor-texto);
+}
+
+.botao {
+  width: max-content;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 4.4375rem;
+}
+
+.input-label-container {
+  width: 50%;
+  gap: 25px;
+  color: var(--cor-texto);
+}
+
+.input-label-container label {
+  color: var(--cor-texto);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
