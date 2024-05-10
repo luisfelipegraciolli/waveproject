@@ -69,6 +69,11 @@
   border-radius: 0.5rem;
 }
 
+.input::placeholder {
+  color: var(--cor-texto);
+  opacity: 0.6;
+}
+
 .input:focus {
   outline: 1px solid var(--cor-fundo);
 }
