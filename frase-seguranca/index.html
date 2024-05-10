@@ -22,21 +22,33 @@
   <body>
     <h1 class="titulo">Defina uma pergunta de segurança</h1>
 
-    <div id="div-principal">
-        <select name="perguntas" class="input" required>
-          <option value="" disabled>Selecione uma pergunta</option>
+    <form id="frase-seguranca-form">
+      <div id="div-principal">
+        <select name="perguntas" class="input" id="pergunta" required>
+          <option value="" selected disabled>Selecione uma pergunta</option>
           <option value="1">Qual era seu esporte favorito no ensino médio?</option>
           <option value="2">Qual era o nome de seu primeiro animal de estimação?</option>
-          <option value="3">Qual era o nome da primeira escola em que você estudou?</option>
+          <option value="3">
+            Qual era o nome da primeira escola em que você estudou?
+          </option>
           <option value="4">Qual é o nome e sobrenome de seu avô paterno?</option>
           <option value="5">Qual é sua comida favorita?</option>
           <option value="6">Qual é o nome e sobrenome de sua avó materna?</option>
-          <option value="7">Qual é o nome de uma faculdade que você tentou entrar, mas que não frequentou?</option>
+          <option value="7">
+            Qual é o nome de uma faculdade que você tentou entrar, mas que não frequentou?
+          </option>
           <option value="8">Em qual cidade seus pais se conheceram?</option>
         </select>
-        <input class="input" type="text" placeholder="Resposta...">
+        <input
+          required
+          class="input"
+          type="text"
+          id="resposta"
+          placeholder="Resposta..." />
+        <span class="mensagem-de-erro"></span>
         <button class="botao">Entrar</button>
         <footer class="logo">WaveLink</footer>
-    </div>
+      </div>
+    </form>
   </body>
 </html>

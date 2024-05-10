@@ -33,15 +33,21 @@ function login(e) {
     return //*esse return eh pra nao continuar a funcao se der invalido.
   }
 
-  const primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login"))
-  if (!primeiroLogin) {
-    localStorage.setItem("primeiro-login", true)
+  let primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login"))
+
+  if (primeiroLogin === null) {
+    primeiroLogin = true
+    localStorage.setItem("primeiro-login", primeiroLogin)
   }
 
-  sessionStorage.setItem("logado", true)
-
   //TODO: Colocar no lugar de "editar-perfil" o diretorio da proxima pagina.
-  location.href = "../frase-seguranca"
+
+  if (primeiroLogin) {
+    location.href = "../frase-seguranca"
+  } else {
+    location.href = "../"
+    sessionStorage.setItem("logado", true)
+  }
 }
 
 function validaInput(input, esperado) {
