@@ -39,6 +39,16 @@ function login(e) {
     spanErro.innerText = "Usuário ou senha incorretos."
     return //*esse return eh pra nao continuar a funcao se der invalido.
   }
+
+  const primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login")) || []
+  if (!primeiroLogin) {
+    localStorage.setItem("primeiro-login", JSON.stringify(true))
+  }
+
+  const urlAtual = location.href
+  //TODO: Colocar no lugar de "" o diretorio da proxima pagina.
+  const proximaPagina = urlAtual.replace("/login", "")
+  location.href = proximaPagina
 }
 
 function validaInput(input, esperado) {
