@@ -41,7 +41,7 @@ function login(e) {
   sessionStorage.setItem("logado", true)
 
   //TODO: Colocar no lugar de "editar-perfil" o diretorio da proxima pagina.
-  location.href = "../editar-perfil"
+  location.href = "../frase-seguranca"
 }
 
 function validaInput(input, esperado) {
