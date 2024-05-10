@@ -33,15 +33,15 @@ function login(e) {
     return //*esse return eh pra nao continuar a funcao se der invalido.
   }
 
-  const primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login")) || []
+  const primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login"))
   if (!primeiroLogin) {
-    localStorage.setItem("primeiro-login", JSON.stringify(true))
+    localStorage.setItem("primeiro-login", true)
   }
 
-  const urlAtual = location.href
-  //TODO: Colocar no lugar de "" o diretorio da proxima pagina.
-  const proximaPagina = urlAtual.replace("/login", "")
-  location.href = proximaPagina
+  sessionStorage.setItem("logado", true)
+
+  //TODO: Colocar no lugar de "editar-perfil" o diretorio da proxima pagina.
+  location.href = "../editar-perfil"
 }
 
 function validaInput(input, esperado) {
