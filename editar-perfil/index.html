@@ -13,6 +13,7 @@
         rel="stylesheet" />
       <link rel="stylesheet" href="../css/global.css" />
       <link rel="stylesheet" href="editar-perfil.css" />
+      <script defer src="./editar-perfil.js"></script>
     </head>
   </head>
   <body>
@@ -29,7 +30,7 @@
       <p class="titulo">Olá, <span id="usuario">(Usuário)</span>!</p>
       <p class="titulo-secundario">Alterar dados do perfil</p>
       <div class="forms-container">
-        <form>
+        <form id="form-usuario">
           <div class="input-label">
             <label for="usuario-input">Usuário:</label>
             <input
@@ -39,27 +40,35 @@
               id="usuario-input"
               class="input"
               placeholder="Digite seu novo nome de usuário" />
+            <span class="mensagem-de-erro"></span>
           </div>
           <button class="botao">Trocar Usuário</button>
         </form>
-        <form>
+        <form id="form-senha">
           <div class="input-label">
             <label for="antiga-senha">Senha:</label>
             <input
-              type="text"
+              required
+              type="password"
               id="antiga-senha"
+              name="antiga-senha"
               class="input"
               placeholder="Digite sua antiga senha" />
             <input
-              type="text"
+              required
+              type="password"
               id="nova-senha"
+              name="nova-senha"
               class="input"
               placeholder="Digite sua nova senha" />
             <input
-              type="text"
+              required
+              type="password"
               id="confirma-nova-senha"
+              name="confirma-nova-senha"
               class="input"
               placeholder="Confirme sua nova senha" />
+            <span class="mensagem-de-erro"></span>
           </div>
           <button class="botao">Trocar Senha</button>
         </form>
