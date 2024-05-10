@@ -2,7 +2,6 @@ const formLogin = document.getElementById("form-principal")
 const usuarioInput = document.getElementById("usuario-input")
 const senhaInput = document.getElementById("senha-input")
 const spanErro = document.querySelector(".mensagem-de-erro")
-const botaoLogin = document.getElementById("botao-login")
 
 usuarioInput.addEventListener("focus", () => {
   spanErro.innerText = ""
@@ -20,37 +19,29 @@ if (!dados) {
   localStorage.setItem("dados", JSON.stringify(dados))
 }
 
-formLogin.addEventListener("submit", (e) => {
-  e.preventDefault() //* impede o reload da pagina
-  e.target.reset() //*apaga todos os campos do form
-})
-
-botaoLogin.addEventListener("click", login)
+formLogin.addEventListener("submit", login)
 
 function login(e) {
+  e.preventDefault()
   // TODO: Arrumar uma forma de encriptar essas infos para primeiro acesso
   const usuario = dados.usuario
   const senha = dados.senha
 
   if (!validaInput(usuarioInput, usuario) | !validaInput(senhaInput, senha)) {
-    e.preventDefault() //*nao envia o formulario se nao for valido
-    const form = e.target.parentNode
-    form.reset()
     spanErro.innerText = "Usuário ou senha incorretos."
+    e.target.reset()
     return //*esse return eh pra nao continuar a funcao se der invalido.
   }
 
-  const primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login")) || []
+  const primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login"))
   if (!primeiroLogin) {
-    localStorage.setItem("primeiro-login", JSON.stringify(true))
+    localStorage.setItem("primeiro-login", true)
   }
 
-  const urlAtual = location.href
-  //TODO: Colocar no lugar de "" o diretorio da proxima pagina.
-  const proximaPagina = urlAtual.replace("/login", "../frase-segunca/")
-  // Por algum motivo usando a variavel não redireciona pra proxima pagina
-  // TODO: fazer com que funcione seguindo a logica do primeiro login
-  window.location.assign("../frase-seguranca/")
+  sessionStorage.setItem("logado", true)
+
+  //TODO: Colocar no lugar de "editar-perfil" o diretorio da proxima pagina.
+  location.href = "../frase-seguranca"
 }
 
 function validaInput(input, esperado) {
