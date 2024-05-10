@@ -47,8 +47,10 @@ function login(e) {
 
   const urlAtual = location.href
   //TODO: Colocar no lugar de "" o diretorio da proxima pagina.
-  const proximaPagina = urlAtual.replace("/login", "")
-  location.href = proximaPagina
+  const proximaPagina = urlAtual.replace("/login", "../frase-segunca/")
+  // Por algum motivo usando a variavel não redireciona pra proxima pagina
+  // TODO: fazer com que funcione seguindo a logica do primeiro login
+  window.location.assign("../frase-seguranca/")
 }
 
 function validaInput(input, esperado) {
