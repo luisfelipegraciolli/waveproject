@@ -1,7 +1,16 @@
 const formLogin = document.getElementById("form-principal")
 const usuarioInput = document.getElementById("usuario-input")
 const senhaInput = document.getElementById("senha-input")
+const spanErro = document.querySelector(".mensagem-de-erro")
 const botaoLogin = document.getElementById("botao-login")
+
+usuarioInput.addEventListener("focus", () => {
+  spanErro.innerText = ""
+})
+
+senhaInput.addEventListener("focus", () => {
+  spanErro.innerText = ""
+})
 
 //*cria uma primeira senha e usuario se ja nao existir no local storage
 let dados = JSON.parse(localStorage.getItem("dados"))
@@ -27,22 +36,13 @@ function login(e) {
     e.preventDefault() //*nao envia o formulario se nao for valido
     const form = e.target.parentNode
     form.reset()
-    alert("Usuario ou senha incorretos, tente novamente!")
+    spanErro.innerText = "Usuário ou senha incorretos."
     return //*esse return eh pra nao continuar a funcao se der invalido.
   }
-
-  alert("USUARIO LOGADO!")
 }
 
 function validaInput(input, esperado) {
-  const spanErro = input.parentElement.lastElementChild
   const inputValue = input.value.trim()
-  if (inputValue === "") {
-    spanErro.innerText = "Digite ao menos um caractere!"
-    return false
-  } else {
-    spanErro.innerText = ""
-  }
 
   if (inputValue !== esperado) {
     return false
