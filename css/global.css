@@ -10,8 +10,17 @@
   font-family: "Hanken Grotesk", sans-serif;
 }
 
+.titulo {
+  font-size: 3rem;
+  color: var(--cor-texto);
+}
+
+.titulo-secundario {
+  font-size: 1.5rem;
+}
+
 .botao {
-  font-size: 1rem;
+  font-size: 1.25rem;
   padding: 0.5rem 1rem;
   color: white;
   outline: none;
@@ -27,4 +36,77 @@
 
 .botao:active {
   background-color: var(--cor-texto);
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--cor-texto);
+}
+
+/* * Em volta de varios conjuntos (label+input) ou de varios inputs, pra espacar eles */
+.input-label-container {
+  display: grid;
+  gap: 1rem;
+}
+
+/* * Em volta de um unico conjunto (label+input), pra espacar a label e o input */
+/*!usar so se tiver label junto do input*/
+.input-label {
+  display: grid;
+  gap: 0.5rem;
+  color: var(--cor-texto);
+}
+
+.input-label label {
+  font-size: 1.7rem;
+}
+
+/** colocar diretamente no input para formatar ele*/
+.input {
+  padding: 0.6rem 0.8rem;
+  border: 0.9px solid var(--cor-fundo);
+  border-radius: 0.5rem;
+}
+
+.input::placeholder {
+  color: var(--cor-texto);
+  opacity: 0.6;
+}
+
+.input:focus {
+  outline: 1px solid var(--cor-fundo);
+}
+
+/** Essa aqui eh pras mensagens de erro que sao incluidas via JS*/
+.mensagem-de-erro {
+  color: red;
+  font-size: 0.7rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cor-fundo);
+  padding: 1rem 2rem;
+}
+
+.header a {
+  text-decoration: none;
+  color: white;
+}
+
+.header nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header nav a {
+  transition: all 0.2s;
+  font-size: 1.2rem;
+}
+
+.header nav a:hover {
+  color: #d3d3d3;
 }
