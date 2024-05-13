@@ -21,9 +21,8 @@ form.addEventListener("submit", (e) => {
   }
 
   localStorage.setItem("pergunta-de-seguranca", JSON.stringify({ pergunta, resposta }))
-  sessionStorage.setItem("logado", false)
-  sessionStorage.setItem("primeiro-login", false)
-  sessionStorage.removeItem("permite-pergunta-seguranca")
+  sessionStorage.setItem("logado", true)
+  localStorage.setItem("primeiro-login", false)
 
-  location.href = "/login"
+  location.href = "/"
 })

@@ -40,12 +40,10 @@ function login(e) {
     localStorage.setItem("primeiro-login", primeiroLogin)
   }
 
-  //TODO: Colocar no lugar de "editar-perfil" o diretorio da proxima pagina.
-
   if (primeiroLogin) {
-    location.href = "../frase-seguranca"
+    location.href = "/pergunta-seguranca"
   } else {
-    location.href = "../"
+    location.href = "/"
     sessionStorage.setItem("logado", true)
   }
 }
