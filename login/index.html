@@ -12,11 +12,7 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="login.css" />
-    <!--
-         ! esse defer na <script> eh ESSENCIAL, faz com que o JS
-         ! seja carregado somente depois do HTML. Se nao usar,
-         ! teremos problemas na manipulacao do DOM.
-    -->
+    <script src="../js/checa-login.js"></script>
     <script defer src="login.js"></script>
   </head>
   <body>
@@ -24,7 +20,7 @@
       <div id="imagem-principal" class="div"></div>
       <div id="wrapper-form-login">
         <form id="form-principal">
-          <legend><h1>Login</h1></legend>
+          <legend><h1 class="titulo">Login</h1></legend>
           <div class="input-label-container">
             <div class="input-label">
               <label for="usuario-input">Usuário: </label>
@@ -32,6 +28,7 @@
                 required
                 type="text"
                 id="usuario-input"
+                class="input"
                 placeholder="Digite seu nome de usuario" />
             </div>
             <div class="input-label">
@@ -39,17 +36,15 @@
               <input
                 required
                 type="password"
+                class="input"
                 id="senha-input"
                 placeholder="Digite sua senha" />
               <span class="mensagem-de-erro"></span>
             </div>
           </div>
-          <button class="botao" id="botao-login">Entrar</button>
-          <!-- TODO: Fazer uma pagina especifica pro "esqueci a senha" -->
-          <a id="link-mudar-senha" href="../editar-perfil/index.html"
-            >Esqueceu sua senha?</a
-          >
-          <footer>WaveLink</footer>
+          <button class="botao">Entrar</button>
+          <a id="link-mudar-senha" href="../redefinir-senha/">Esqueceu sua senha?</a>
+          <footer class="logo">WaveLink</footer>
         </form>
       </div>
     </main>
