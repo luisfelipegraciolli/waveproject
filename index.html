@@ -64,14 +64,26 @@
             <label for="input-servico-prestado" class="input-label"
               >Serviço prestado:</label
             >
-            <!-- !SUBSUTITUIR POR SELECT-->
-            <input type="text" class="input" placeholder="Selecione o serviço" required />
+
+            <select name="servico-prestado" class="input" id="select-servico-prestado" required>
+              <option value="" disabled selected >Selecione um serviço</option>
+              <option value="telmovel">Telefonia Móvel</option>
+              <option value="internet">Internet Residencial e Empresarial:</option>
+              <option value="cyber">Cybersegurança Avançada:</option>
+              <option value="voip">Serviços de VoIP</option>
+
+
+            </select>
             <span class="mensagem-de-erro"></span>
           </div>
           <div class="input-label">
             <label for="input-categoria" class="input-label">Categoria do serviço:</label>
-            <!-- !SUBSUTITUIR POR SELECT-->
-            <input type="text" class="input" placeholder="Selecione a categoria do serviço" required>
+            <select name="categoria-servico-prestado" class="input" id="select-categoria-servico-prestado" required>
+              <option value="" disabled selected >Selecione a categoria do serviço</option>
+              <option value="abertura">Abertura</option>
+              <option value="assistencia">Assistência</option>
+              <option value="encerramento">Encerramento</option>
+            </select>
             <span class="mensagem-de-erro"></span>
           </div>
           <div class="input-label">
