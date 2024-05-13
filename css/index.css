@@ -1,0 +1,82 @@
+.container-principal{
+    width: 100%;
+    padding: 3rem 8rem 3rem 8rem;
+}
+
+.titulo{
+    margin-bottom: 1.5625rem;
+    font-size: 2.1875rem;
+}
+
+#titulo-adicionar-servicos{
+    margin-top: 25px;
+}
+
+#container-tabela-principal{
+    
+    width: 100%;
+    height: fit-content;
+}
+
+.input-label-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-top: 30px;
+    margin-bottom: 55px;
+}
+
+.input-label{
+    font-weight: 400;
+    width: 100%;
+}
+
+input{
+    height: 3.4375rem;
+}
+
+select{
+    height: 3.4375rem;
+    background-color: #ffffff;
+    color: var(--cor-texto);
+}
+
+.botao{
+    display: block;
+    margin: 0 auto;
+    padding: 10px 26px 12px 20px;
+    text-align: center;
+}
+
+table, th, td {
+  border: 1px solid var(--cor-fundo);
+  border-collapse: collapse;
+  padding: 20px 10px 20px 10px;
+}
+
+table{
+    width: 100%;
+}
+
+th{
+    background-color: var(--cor-fundo);
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+td{
+    color: var(--cor-texto);
+}
+#data{
+    text-decoration: underline;
+}
+
+#data:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+
+

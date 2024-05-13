@@ -11,11 +11,103 @@
       href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="../css/global.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script defer src="js/index.js"></script>
     <script src="../js/checa-login.js"></script>
-    <script defer src="./js/index.js"></script>
   </head>
   <body>
-    <p>home</p>
+    <header class="header">
+      <p class="logo">
+        <a href="../">WaveLink</a>
+      </p>
+      <nav>
+        <a href="./editar-perfil/">Perfil</a>
+        <a href="../">Serviços</a>
+        <a href="./login/">Sair</a>
+
+      </nav>
+    </header>
+    <main>
+      <div class="container-principal">
+        <p class="titulo">Serviços Prestados</p>
+        <div id="container-tabela-principal">
+          <table id="tabela-principal">
+            <tr id="first-row">
+              <th>Funcionário</th>
+              <th>Cliente</th>
+              <th>Serviço</th>
+              <th>Categoria</th>
+              <th>Data</th>
+            </tr>
+            <tr class="linha">
+              <td id="funcionario">Fulano</td>
+              <td id="cliente">Ciclano</td>
+              <td id="servico">VoIP</td>
+              <td id="categoria">Assistencia</td>
+              <td id="data">31/12/2024</td>
+            </tr>
+            <!--A cada insert adicionar uma tag tr com as td necessarias-->
+          </table>
+        </div>
+
+        <p class="titulo" id="titulo-adicionar-servicos">Adicionar Serviços</p>
+        <div class="input-label-container" id="container-linha1">
+          <div class="input-label">
+            <label for="input-funcionario" class="input-label">Funcionário:</label>
+            <input
+              type="text"
+              class="input"
+              placeholder="Digite o nome do funcionário"
+              required />
+            <span class="mensagem-de-erro"></span>
+          </div>
+          <div class="input-label">
+            <label for="input-cliente" class="input-label">Cliente:</label>
+            <input
+              type="text"
+              class="input"
+              placeholder="Digite o nome do cliente"
+              required />
+            <span class="mensagem-de-erro"></span>
+          </div>
+        </div>
+        <div class="input-label-container" id="container-linha2">
+          <div class="input-label">
+            <label for="input-servico-prestado" class="input-label"
+              >Serviço prestado:</label
+            >
+
+            <select name="servico-prestado" class="input" id="select-servico-prestado" required>
+              <option value="" disabled selected >Selecione um serviço</option>
+              <option value="telmovel">Telefonia Móvel</option>
+              <option value="internet">Internet Residencial e Empresarial:</option>
+              <option value="cyber">Cybersegurança Avançada:</option>
+              <option value="voip">Serviços de VoIP</option>
+
+
+            </select>
+            <span class="mensagem-de-erro"></span>
+          </div>
+          <div class="input-label">
+            <label for="input-categoria" class="input-label">Categoria do serviço:</label>
+            <select name="categoria-servico-prestado" class="input" id="select-categoria-servico-prestado" required>
+              <option value="" disabled selected >Selecione a categoria do serviço</option>
+              <option value="abertura">Abertura</option>
+              <option value="assistencia">Assistência</option>
+              <option value="encerramento">Encerramento</option>
+            </select>
+            <span class="mensagem-de-erro"></span>
+          </div>
+          <div class="input-label">
+            <label for="input-data-hora" class="input-label" placeholder=""
+              >Data e hora</label
+            >
+            <input type="datetime-local" class="input" required>
+            <span class="mensagem-de-erro"></span>
+          </div>
+        </div>
+        <button class="botao" onclick="adicionar()">Adicionar</button>
+      </div>
+    </main>
   </body>
 </html>
