@@ -34,3 +34,9 @@
 input{
     height: 3.4375rem;
 }
+
+select{
+    height: 3.4375rem;
+    background-color: #ffffff;
+    color: var(--cor-texto);
+}
