@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,25 +12,27 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="./redefinir-senha.css" />
-    <!--
-         ! esse defer na <script> eh ESSENCIAL, faz com que o JS
-         ! seja carregado somente depois do HTML. Se nao usar,
-         ! teremos problemas na manipulacao do DOM.
-    -->
-    <script defer src="frase-seguranca.js"></script>
+    <script src="../js/checa-redefinir-senha.js"></script>
+    <script defer src="redefinir-senha.js"></script>
   </head>
   <body>
     <h1 class="titulo">Redefina sua senha</h1>
 
-    <div id="div-principal">
-        <!--TODO: determinar a mensagem a partir do local storage da pergunta -->
+    <form id="pergunta-de-seguranca-form">
+      <div id="div-principal">
         <div id="wrapper-pergunta">
-          <h2 id="pergunta-de-seguranca">Qual o nome do seu primeiro pet?</h2>
-          <input class="input" type="text" placeholder="Resposta...">
+          <h2 id="pergunta-de-seguranca"></h2>
+          <input
+            required
+            id="resposta"
+            class="input"
+            type="text"
+            placeholder="Resposta..." />
+          <span class="mensagem-de-erro"></span>
         </div>
-        <!-- TODO: Jogar para ./redefine.html ao clicar-->
-        <button class="botao" onclick="verificaPergunta()">Redefinir senha</button>
+        <button class="botao">Redefinir senha</button>
         <footer class="logo">WaveLink</footer>
-    </div>
+      </div>
+    </form>
   </body>
 </html>
