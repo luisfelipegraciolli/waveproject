@@ -36,7 +36,25 @@
       <div class="container-principal">
         <p class="titulo">Serviços Prestados</p>
         <!--Tabela placeholder-->
-        <div id="pseudo-table"><h1 style="text-align: center">Tabela Vem aqui</h1></div>
+        <div id="pseudo-table">
+          <table>
+            <tr id="first-row">
+              <th>Funcionário</th>
+              <th>Cliente</th>
+              <th>Serviço</th>
+              <th>Categoria</th>
+              <th>Data</th>
+            </tr>
+            <tr>
+              <td id="funcionario">Fulano</td>
+              <td id="cliente">Ciclano</td>
+              <td id="servico">VoIP</td>
+              <td id="categoria">Assistencia</td>
+              <td id="data">31/12/2024</td>
+            </tr>
+            <!--A cada insert adicionar uma tag tr com as td necessarias-->
+          </table>
+        </div>
 
         <p class="titulo" id="titulo-adicionar-servicos">Adicionar Serviços</p>
         <div class="input-label-container" id="container-linha1">
@@ -94,6 +112,7 @@
             <span class="mensagem-de-erro"></span>
           </div>
         </div>
+        <button class="botao" onclick="adicionar()">Adicionar</button>
       </div>
     </main>
   </body>
