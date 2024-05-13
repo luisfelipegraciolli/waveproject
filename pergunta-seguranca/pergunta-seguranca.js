@@ -1,12 +1,8 @@
-const form = document.getElementById("frase-seguranca-form")
+const form = document.getElementById("pergunta-seguranca-form")
 const selectPergunta = document.getElementById("pergunta")
 const selectOptions = document.querySelectorAll("#pergunta option")
 const inputResposta = document.getElementById("resposta")
 const spanErro = document.querySelector(".mensagem-de-erro")
-
-if (localStorage.getItem("pergunta-de-seguranca")) {
-  location.href = "../"
-}
 
 inputResposta.addEventListener("focus", () => {
   spanErro.innerText = ""
@@ -25,8 +21,9 @@ form.addEventListener("submit", (e) => {
   }
 
   localStorage.setItem("pergunta-de-seguranca", JSON.stringify({ pergunta, resposta }))
-  localStorage.setItem("logado", true)
-  localStorage.setItem("primeiro-login", false)
+  sessionStorage.setItem("logado", false)
+  sessionStorage.setItem("primeiro-login", false)
+  sessionStorage.removeItem("permite-pergunta-seguranca")
 
-  location.href = "../"
+  location.href = "/login"
 })
