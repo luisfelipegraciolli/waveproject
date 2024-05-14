@@ -80,10 +80,4 @@ td {
 
 .data {
   cursor: pointer;
-  text-decoration: underline;
-  transition: 0.5s all;
-}
-
-.data:hover {
-  text-decoration: none;
 }

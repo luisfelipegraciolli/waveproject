@@ -44,8 +44,7 @@ function criarLinhaDaTabela(info) {
     const td = document.createElement("td")
     if (key == "data-hora") {
       const dataObject = new Date(value)
-      td.innerText = dataObject.toLocaleDateString()
-      td.title = dataObject.toLocaleTimeString().slice(0, -3)
+      td.innerText = dataObject.toLocaleString().slice(0, -3)
       td.className = "data"
     } else {
       td.innerText = value
