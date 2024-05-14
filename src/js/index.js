@@ -67,7 +67,7 @@ function exibirServicos(servicos, tbody, semServicos) {
   const servicosPorData = servicos.sort((a, b) => {
     const data1 = new Date(a["data-hora"])
     const data2 = new Date(b["data-hora"])
-    return data1 - data2
+    return data2 - data1
   })
 
   for (let info of servicosPorData) {
