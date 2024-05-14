@@ -1,11 +1,11 @@
 const form = document.getElementById("pergunta-de-seguranca-form")
-const pergunta = document.getElementById("pergunta-de-seguranca")
+const perguntaContainer = document.getElementById("pergunta-de-seguranca")
 const resposta = document.getElementById("resposta")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
 const dados = JSON.parse(localStorage.getItem("pergunta-de-seguranca"))
 
-pergunta.innerText = dados.pergunta
+perguntaContainer.innerText = dados.pergunta
 
 resposta.addEventListener("focus", () => {
   spanErro.innerText = ""
@@ -28,5 +28,5 @@ form.addEventListener("submit", (e) => {
 
   sessionStorage.setItem("pergunta-respondida", true)
 
-  location.href = "./redefine.html"
+  location.href = "/redefinir-senha/redefine.html"
 })

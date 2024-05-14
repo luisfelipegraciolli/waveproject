@@ -4,5 +4,6 @@
   "semi": false,
   "bracketSameLine": true,
   "printWidth": 90,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "bracketSpacing": true
 }
