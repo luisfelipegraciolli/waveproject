@@ -10,9 +10,7 @@ const dataHora = form["data-hora"]
 
 let servicos = JSON.parse(localStorage.getItem("servicos")) ?? []
 
-for (let i = 0; i < 40; i++) {
-  exibirServicos(servicos, tbody, semServicos)
-}
+exibirServicos(servicos, tbody, semServicos)
 
 form.addEventListener("submit", adicionarServico)
 
@@ -27,16 +25,12 @@ function adicionarServico(e) {
     [dataHora.name]: dataHora.value,
   }
 
-  for (let i = 0; i < 50; i++) {
-    const tr = criarLinhaDaTabela(inputs)
-
-    tbody.appendChild(tr)
-  }
-
   tbody.parentElement.style.display = "table"
   semServicos.style.display = "none"
 
   servicos = [...servicos, inputs]
+
+  exibirServicos(servicos, tbody, semServicos)
 
   localStorage.setItem("servicos", JSON.stringify(servicos))
 
@@ -69,7 +63,15 @@ function exibirServicos(servicos, tbody, semServicos) {
     semServicos.style.display = "none"
   }
 
-  for (let info of servicos) {
+  tbody.innerHTML = ""
+
+  const servicosPorData = servicos.sort((a, b) => {
+    const data1 = new Date(a["data-hora"])
+    const data2 = new Date(b["data-hora"])
+    return data1 - data2
+  })
+
+  for (let info of servicosPorData) {
     const tr = criarLinhaDaTabela(info)
     tbody.appendChild(tr)
   }
