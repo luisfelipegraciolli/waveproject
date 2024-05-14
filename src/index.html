@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WaveLink</title>
-    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet" />
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/index.css" />
     <script defer src="js/index.js"></script>
     <script src="js/checa-login.js"></script>
   </head>
@@ -76,21 +75,27 @@
               >Serviço prestado:</label
             >
 
-            <select name="servico-prestado" class="input" id="select-servico-prestado" required>
-              <option value="" disabled selected >Selecione um serviço</option>
+            <select
+              name="servico-prestado"
+              class="input"
+              id="select-servico-prestado"
+              required>
+              <option value="" disabled selected>Selecione um serviço</option>
               <option value="telmovel">Telefonia Móvel</option>
               <option value="internet">Internet Residencial e Empresarial:</option>
               <option value="cyber">Cybersegurança Avançada:</option>
               <option value="voip">Serviços de VoIP</option>
-
-
             </select>
             <span class="mensagem-de-erro"></span>
           </div>
           <div class="input-label">
             <label for="input-categoria" class="input-label">Categoria do serviço:</label>
-            <select name="categoria-servico-prestado" class="input" id="select-categoria-servico-prestado" required>
-              <option value="" disabled selected >Selecione a categoria do serviço</option>
+            <select
+              name="categoria-servico-prestado"
+              class="input"
+              id="select-categoria-servico-prestado"
+              required>
+              <option value="" disabled selected>Selecione a categoria do serviço</option>
               <option value="abertura">Abertura</option>
               <option value="assistencia">Assistência</option>
               <option value="encerramento">Encerramento</option>
@@ -101,7 +106,7 @@
             <label for="input-data-hora" class="input-label" placeholder=""
               >Data e hora</label
             >
-            <input type="datetime-local" class="input" required>
+            <input type="datetime-local" class="input" required />
             <span class="mensagem-de-erro"></span>
           </div>
         </div>
