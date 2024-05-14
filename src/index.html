@@ -28,89 +28,89 @@
     <main>
       <div class="container-principal">
         <p class="titulo">Serviços Prestados</p>
+        <p id="sem-servicos">Ainda não há serviços cadastrados!</p>
         <div id="container-tabela-principal">
           <table id="tabela-principal">
-            <tr id="first-row">
-              <th>Funcionário</th>
-              <th>Cliente</th>
-              <th>Serviço</th>
-              <th>Categoria</th>
-              <th>Data</th>
-            </tr>
-            <tr class="linha">
-              <td id="funcionario">Fulano</td>
-              <td id="cliente">Ciclano</td>
-              <td id="servico">VoIP</td>
-              <td id="categoria">Assistencia</td>
-              <td id="data">31/12/2024</td>
-            </tr>
-            <!--A cada insert adicionar uma tag tr com as td necessarias-->
+            <thead>
+              <tr id="first-row">
+                <th>Funcionário</th>
+                <th>Cliente</th>
+                <th>Serviço</th>
+                <th>Categoria</th>
+                <th>Data e hora</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
           </table>
         </div>
-
-        <p class="titulo" id="titulo-adicionar-servicos">Adicionar Serviços</p>
-        <div class="input-label-container" id="container-linha1">
-          <div class="input-label">
-            <label for="input-funcionario" class="input-label">Funcionário:</label>
-            <input
-              type="text"
-              class="input"
-              placeholder="Digite o nome do funcionário"
-              required />
-            <span class="mensagem-de-erro"></span>
+        <form id="novo-servico-form">
+          <p class="titulo" id="titulo-adicionar-servicos">Adicionar Serviços</p>
+          <div class="input-label-container" id="container-linha1">
+            <div class="input-label">
+              <label for="input-funcionario" class="input-label">Funcionário:</label>
+              <input
+                type="text"
+                class="input"
+                name="funcionario"
+                placeholder="Digite o nome do funcionário"
+                required />
+              <span class="mensagem-de-erro"></span>
+            </div>
+            <div class="input-label">
+              <label for="input-cliente" class="input-label">Cliente:</label>
+              <input
+                type="text"
+                name="cliente"
+                class="input"
+                placeholder="Digite o nome do cliente"
+                required />
+              <span class="mensagem-de-erro"></span>
+            </div>
           </div>
-          <div class="input-label">
-            <label for="input-cliente" class="input-label">Cliente:</label>
-            <input
-              type="text"
-              class="input"
-              placeholder="Digite o nome do cliente"
-              required />
-            <span class="mensagem-de-erro"></span>
+          <div class="input-label-container" id="container-linha2">
+            <div class="input-label">
+              <label for="input-servico-prestado" class="input-label"
+                >Serviço prestado:</label
+              >
+              <select name="servico" class="input" id="select-servico" required>
+                <option value="" disabled selected>Selecione um serviço</option>
+                <option value="Telefonia Móvel">Telefonia Móvel</option>
+                <option value="Internet Residencial e Empresarial">
+                  Internet Residencial e Empresarial
+                </option>
+                <option value="Cybersegurança Avançada">Cybersegurança Avançada</option>
+                <option value="Serviços de VoIP">Serviços de VoIP</option>
+              </select>
+              <span class="mensagem-de-erro"></span>
+            </div>
+            <div class="input-label">
+              <label for="input-categoria" class="input-label"
+                >Categoria do serviço:</label
+              >
+              <select
+                name="categoria-servico"
+                class="input"
+                id="select-categoria-servico"
+                required>
+                <option value="" disabled selected>
+                  Selecione a categoria do serviço
+                </option>
+                <option value="Abertura">Abertura</option>
+                <option value="Assistência">Assistência</option>
+                <option value="Encerramento">Encerramento</option>
+              </select>
+              <span class="mensagem-de-erro"></span>
+            </div>
+            <div class="input-label">
+              <label for="input-data-hora" class="input-label" placeholder=""
+                >Data e hora</label
+              >
+              <input name="data-hora" type="datetime-local" class="input" required />
+              <span class="mensagem-de-erro"></span>
+            </div>
           </div>
-        </div>
-        <div class="input-label-container" id="container-linha2">
-          <div class="input-label">
-            <label for="input-servico-prestado" class="input-label"
-              >Serviço prestado:</label
-            >
-
-            <select
-              name="servico-prestado"
-              class="input"
-              id="select-servico-prestado"
-              required>
-              <option value="" disabled selected>Selecione um serviço</option>
-              <option value="telmovel">Telefonia Móvel</option>
-              <option value="internet">Internet Residencial e Empresarial:</option>
-              <option value="cyber">Cybersegurança Avançada:</option>
-              <option value="voip">Serviços de VoIP</option>
-            </select>
-            <span class="mensagem-de-erro"></span>
-          </div>
-          <div class="input-label">
-            <label for="input-categoria" class="input-label">Categoria do serviço:</label>
-            <select
-              name="categoria-servico-prestado"
-              class="input"
-              id="select-categoria-servico-prestado"
-              required>
-              <option value="" disabled selected>Selecione a categoria do serviço</option>
-              <option value="abertura">Abertura</option>
-              <option value="assistencia">Assistência</option>
-              <option value="encerramento">Encerramento</option>
-            </select>
-            <span class="mensagem-de-erro"></span>
-          </div>
-          <div class="input-label">
-            <label for="input-data-hora" class="input-label" placeholder=""
-              >Data e hora</label
-            >
-            <input type="datetime-local" class="input" required />
-            <span class="mensagem-de-erro"></span>
-          </div>
-        </div>
-        <button class="botao" onclick="adicionar()">Adicionar</button>
+          <button class="botao">Adicionar</button>
+        </form>
       </div>
     </main>
   </body>
