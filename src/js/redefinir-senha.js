@@ -28,5 +28,5 @@ form.addEventListener("submit", (e) => {
 
   sessionStorage.setItem("pergunta-respondida", true)
 
-  location.href = "./redefine.html"
+  location.href = "/redefinir-senha/redefine.html"
 })
