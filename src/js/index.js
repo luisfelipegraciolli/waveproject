@@ -64,12 +64,11 @@ function exibirServicos(servicos, tbody, semServicos) {
   if (!servicos.length) {
     tbody.parentElement.style.display = "none"
     semServicos.style.display = "block"
-    semServicos.innerText = "Não existem serviços cadastrados com essa informação!"
+    semServicos.innerText = "Ainda não há serviços cadastrados!"
     return
   } else {
     tbody.parentElement.style.display = "table"
     semServicos.style.display = "none"
-    semServicos.innerText = "Ainda não há serviços cadastrados!"
   }
 
   tbody.innerHTML = ""
@@ -107,5 +106,7 @@ function filtrarServicos(e) {
       return acc
     }, [])
     exibirServicos(servicosFiltrados, tbody, semServicos)
+    if (!servicosFiltrados.length)
+      semServicos.innerText = "Não existem serviços cadastrados com essa informação!"
   }
 }
