@@ -92,15 +92,15 @@ td {
     padding: 1rem;
   }
   
-}
-@media only screen and (orientation: landscape){
-  .input-label-container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+  @media only screen and (orientation: landscape){
+    .input-label-container {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+    .container-principal{
+      padding: 3rem 5rem 3rem 5rem;
+    }
+    
   }
-  .container-principal{
-    padding: 3rem 5rem 3rem 5rem;
-  }
-  
 }

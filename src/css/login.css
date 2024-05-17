@@ -48,14 +48,14 @@ main {
     width: 0%;
     height: 0%;
   }
-}
-@media only screen and (orientation: landscape){
-  #wrapper-form-login{
-    width: 100%;
-  }
-
-  #imagem-principal{
-    width: 0%;
-    height: 0%;
+  @media only screen and (orientation: landscape){
+    #wrapper-form-login{
+      width: 100%;
+    }
+  
+    #imagem-principal{
+      width: 0%;
+      height: 0%;
+    }
   }
 }

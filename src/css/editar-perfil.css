@@ -43,22 +43,23 @@ form button {
   form{
     width: 100%;
   }
-}
-@media only screen and (orientation: landscape){
-  /* Principal */
-  .forms-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-  }
-  main{
-    justify-content: center;
-    align-items: center;
-  }
-  form{
-    width: 100%;
+  
+  @media only screen and (orientation: landscape){
+    /* Principal */
+    .forms-container{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+    main{
+      justify-content: center;
+      align-items: center;
+    }
+    form{
+      width: 100%;
+    }
   }
 }
