@@ -108,6 +108,7 @@ td {
     position: unset;
   }
   th {
+    background-color: #ffffff;
     color: var(--cor-texto);
   }
 }
