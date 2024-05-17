@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>WaveLink</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +28,12 @@
     </header>
     <main>
       <div class="container-principal">
-        <p class="titulo">Serviços Prestados</p>
+        <p class="titulo-container">
+          <span class="titulo">Serviços Prestados</span>
+          <span>
+            <button class="botao" onclick="print()">Baixar Tabela</button>
+          </span>
+        </p>
         <p id="sem-servicos">Ainda não há serviços cadastrados!</p>
         <div id="container-tabela-principal">
           <table id="tabela-principal">

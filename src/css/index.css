@@ -19,6 +19,11 @@
   overflow-y: auto;
 }
 
+.titulo-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .input-label-container {
   display: flex;
   justify-content: space-between;
@@ -62,7 +67,6 @@ table {
 }
 
 table thead {
-  z-index: 1;
   position: sticky;
   top: 0;
 }
@@ -80,4 +84,31 @@ td {
 
 .data {
   cursor: pointer;
+}
+
+@media print {
+  .header {
+    display: none;
+  }
+  form {
+    display: none;
+  }
+  .botao {
+    display: none;
+  }
+  .container-principal {
+    font-size: 0.7rem;
+    width: 100%;
+    padding: 3rem;
+  }
+  #container-tabela-principal {
+    max-height: none;
+  }
+  table thead {
+    position: unset;
+  }
+  th {
+    background-color: #ffffff;
+    color: var(--cor-texto);
+  }
 }
