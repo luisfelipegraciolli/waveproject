@@ -48,3 +48,12 @@ option{
     margin: 0 auto;
     margin-bottom: 4.4375rem;
 }
+
+
+@media only screen and (max-width: 600px){
+    .input{
+        width: 75%;
+    }
+}
+  
+  
