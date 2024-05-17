@@ -4,7 +4,6 @@
 }
 
 .titulo {
-  margin-bottom: 1.5625rem;
   font-size: 2.1875rem;
 }
 
@@ -22,6 +21,21 @@
 .titulo-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5625rem;
+}
+
+.titulo-container .botao {
+  font-size: 1rem;
+}
+
+.titulo-container .input {
+  height: unset;
+}
+
+#form-filtro {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .input-label-container {
@@ -50,8 +64,6 @@ select {
 .botao {
   display: block;
   margin: 0 auto;
-  padding: 10px 26px 12px 20px;
-  text-align: center;
 }
 
 table,
@@ -91,7 +103,7 @@ td {
     display: none;
   }
   form {
-    display: none;
+    display: none !important;
   }
   .botao {
     display: none;
