@@ -28,12 +28,21 @@
     </header>
     <main>
       <div class="container-principal">
-        <p class="titulo-container">
+        <div class="titulo-container">
           <span class="titulo">Serviços Prestados</span>
+          <form id="form-filtro">
+            <input
+              type="search"
+              class="input"
+              name="filtro"
+              id="filtro"
+              placeholder="Digite sua busca" />
+            <button class="botao">Filtrar</button>
+          </form>
           <span>
             <button class="botao" onclick="print()">Baixar Tabela</button>
           </span>
-        </p>
+        </div>
         <p id="sem-servicos">Ainda não há serviços cadastrados!</p>
         <div id="container-tabela-principal">
           <table id="tabela-principal">
