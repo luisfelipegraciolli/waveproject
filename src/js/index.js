@@ -20,11 +20,11 @@ function adicionarServico(e) {
   e.preventDefault()
 
   const inputs = {
-    [funcionario.name]: funcionario.value,
-    [cliente.name]: cliente.value,
-    [servico.name]: servico.value,
-    [categoria.name]: categoria.value,
-    [dataHora.name]: dataHora.value,
+    [funcionario.name]: funcionario.value.trim(),
+    [cliente.name]: cliente.value.trim(),
+    [servico.name]: servico.value.trim(),
+    [categoria.name]: categoria.value.trim(),
+    [dataHora.name]: dataHora.value.trim(),
   }
 
   tbody.parentElement.style.display = "table"
