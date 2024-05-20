@@ -110,3 +110,19 @@
 .header nav a:hover {
   color: #d3d3d3;
 }
+
+@media only screen and (max-width: 600px) {
+  /*Header*/
+  .header nav a {
+    font-size: 1rem;
+  }
+
+  .header nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .header .logo {
+    font-size: 1.5rem;
+  }
+}
