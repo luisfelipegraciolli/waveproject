@@ -111,20 +111,18 @@
   color: #d3d3d3;
 }
 
-
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
   /*Header*/
+  .header nav a {
+    font-size: 1rem;
+  }
 
-  .header{
-    padding: 5px 15px 5px 15px;
-  }
-  .header nav a{
-    font-size: 1.0rem;
-  }
-  
   .header nav {
     display: flex;
     gap: 1rem;
   }
 
+  .header .logo {
+    font-size: 1.5rem;
+  }
 }
