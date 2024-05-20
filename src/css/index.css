@@ -98,25 +98,25 @@ td {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
   .input-label-container {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
   }
-  .container-principal{
+  .container-principal {
     padding: 1rem;
   }
-}
-  
-@media only screen and (orientation: landscape){
-  .input-label-container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-  .container-principal{
-    padding: 3rem 5rem 3rem 5rem;
+
+  @media only screen and (orientation: landscape) {
+    .input-label-container {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+    .container-principal {
+      padding: 3rem 5rem 3rem 5rem;
+    }
   }
 }
 
