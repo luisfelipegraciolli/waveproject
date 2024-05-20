@@ -1,18 +1,20 @@
-const form = document.getElementById("novo-servico-form")
+const formNovoServico = document.getElementById("novo-servico-form")
+const formFiltro = document.getElementById("form-filtro")
 const tbody = document.querySelector("#tabela-principal tbody")
 const semServicos = document.getElementById("sem-servicos")
 
-const funcionario = form.funcionario
-const cliente = form.cliente
-const servico = form["servico"]
-const categoria = form["categoria-servico"]
-const dataHora = form["data-hora"]
+const funcionario = formNovoServico.funcionario
+const cliente = formNovoServico.cliente
+const servico = formNovoServico["servico"]
+const categoria = formNovoServico["categoria-servico"]
+const dataHora = formNovoServico["data-hora"]
 
 let servicos = JSON.parse(localStorage.getItem("servicos")) ?? []
 
 exibirServicos(servicos, tbody, semServicos)
 
-form.addEventListener("submit", adicionarServico)
+formNovoServico.addEventListener("submit", adicionarServico)
+formFiltro.addEventListener("submit", filtrarServicos)
 
 function adicionarServico(e) {
   e.preventDefault()
@@ -30,9 +32,13 @@ function adicionarServico(e) {
 
   servicos = [...servicos, inputs]
 
+  formFiltro.filtro.value = ""
+
   exibirServicos(servicos, tbody, semServicos)
 
   localStorage.setItem("servicos", JSON.stringify(servicos))
+
+  alert("Serviço adicionado com sucesso!")
 
   e.target.reset()
 }
@@ -57,8 +63,11 @@ function criarLinhaDaTabela(info) {
 function exibirServicos(servicos, tbody, semServicos) {
   if (!servicos.length) {
     tbody.parentElement.style.display = "none"
+    semServicos.style.display = "block"
+    semServicos.innerText = "Ainda não há serviços cadastrados!"
     return
   } else {
+    tbody.parentElement.style.display = "table"
     semServicos.style.display = "none"
   }
 
@@ -73,5 +82,31 @@ function exibirServicos(servicos, tbody, semServicos) {
   for (let info of servicosPorData) {
     const tr = criarLinhaDaTabela(info)
     tbody.appendChild(tr)
+  }
+}
+
+function filtrarServicos(e) {
+  e.preventDefault()
+  const form = e.target
+  const search = form.filtro.value.trim().toLowerCase()
+  if (search === "") {
+    exibirServicos(servicos, tbody, semServicos)
+    return
+  }
+
+  if (servicos.length) {
+    const servicosFiltrados = servicos.reduce((acc, servico) => {
+      if (
+        Object.values(servico)
+          .map((info) => info.toLowerCase())
+          .includes(search)
+      ) {
+        acc.push(servico)
+      }
+      return acc
+    }, [])
+    exibirServicos(servicosFiltrados, tbody, semServicos)
+    if (!servicosFiltrados.length)
+      semServicos.innerText = "Não existem serviços cadastrados com essa informação!"
   }
 }

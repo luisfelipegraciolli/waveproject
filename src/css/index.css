@@ -4,7 +4,6 @@
 }
 
 .titulo {
-  margin-bottom: 1.5625rem;
   font-size: 2.1875rem;
 }
 
@@ -17,6 +16,28 @@
   height: fit-content;
   max-height: 30rem;
   overflow-y: auto;
+}
+
+.titulo-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5625rem;
+}
+
+.titulo-container .botao {
+  font-size: 1rem;
+}
+
+.titulo-container .input {
+  height: unset;
+}
+
+#form-filtro {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .input-label-container {
@@ -45,8 +66,6 @@ select {
 .botao {
   display: block;
   margin: 0 auto;
-  padding: 10px 26px 12px 20px;
-  text-align: center;
 }
 
 table,
@@ -62,7 +81,6 @@ table {
 }
 
 table thead {
-  z-index: 1;
   position: sticky;
   top: 0;
 }
@@ -80,4 +98,53 @@ td {
 
 .data {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .input-label-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .container-principal {
+    padding: 1rem;
+  }
+
+  @media only screen and (orientation: landscape) {
+    .input-label-container {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+    .container-principal {
+      padding: 3rem 5rem 3rem 5rem;
+    }
+  }
+}
+
+@media print {
+  .header {
+    display: none;
+  }
+  form {
+    display: none !important;
+  }
+  .botao {
+    display: none;
+  }
+  .container-principal {
+    font-size: 0.7rem;
+    width: 100%;
+    padding: 3rem;
+  }
+  #container-tabela-principal {
+    max-height: none;
+  }
+  table thead {
+    position: unset;
+  }
+  th {
+    background-color: #ffffff;
+    color: var(--cor-texto);
+  }
 }
