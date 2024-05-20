@@ -74,6 +74,7 @@ td {
   border: 1px solid var(--cor-fundo);
   border-collapse: collapse;
   padding: 20px 10px 20px 10px;
+  text-wrap: nowrap;
 }
 
 table {
