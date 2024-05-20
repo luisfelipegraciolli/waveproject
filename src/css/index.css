@@ -20,6 +20,8 @@
 
 .titulo-container {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5625rem;
