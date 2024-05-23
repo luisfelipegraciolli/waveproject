@@ -1,3 +1,6 @@
+import { getAdminInfo } from "../api/get-admin-info.js"
+import { putAdminInfo } from "../api/put-admin-info.js"
+
 const formUsuario = document.getElementById("form-usuario")
 const usuarioInput = document.getElementById("usuario-input")
 const spanErroUsuario = formUsuario.querySelector(".mensagem-de-erro")
@@ -10,11 +13,10 @@ const spanErroSenha = formSenha.querySelector(".mensagem-de-erro")
 
 const spanUsuario = document.getElementById("usuario")
 
-const nomeDeUsuario = JSON.parse(localStorage.getItem("dados")).usuario
+const { usuario } = await getAdminInfo("usuario")
 
-spanUsuario.innerText = nomeDeUsuario
+spanUsuario.innerText = usuario
 
-// * apaga mensagem de erro ao clicar novamente no input
 const todosInputs = document.querySelectorAll("input")
 for (const input of todosInputs) {
   input.addEventListener("focus", () => {
@@ -22,7 +24,7 @@ for (const input of todosInputs) {
   })
 }
 
-formUsuario.addEventListener("submit", (e) => {
+formUsuario.addEventListener("submit", async (e) => {
   e.preventDefault()
 
   const novoUsuario = usuarioInput.value.trim("")
@@ -41,25 +43,25 @@ formUsuario.addEventListener("submit", (e) => {
     return
   }
 
-  const dadosAntigos = JSON.parse(localStorage.getItem("dados"))
-  const dadosNovos = { ...dadosAntigos, usuario: novoUsuario }
-  localStorage.setItem("dados", JSON.stringify(dadosNovos))
+  await putAdminInfo({
+    usuario: novoUsuario,
+  })
 
   alert("Mudança de usuário concluída com sucesso!")
 
   location.reload()
 })
 
-formSenha.addEventListener("submit", (e) => {
+formSenha.addEventListener("submit", async (e) => {
   e.preventDefault()
 
-  const dadosAntigos = JSON.parse(localStorage.getItem("dados"))
+  const { senha } = await getAdminInfo("senha")
 
   const antigaSenha = antigaSenhaInput.value.trim()
   const novaSenha = novaSenhaInput.value.trim()
   const confirmaNovaSenha = confirmaNovaSenhaInput.value.trim()
 
-  if (antigaSenha !== dadosAntigos.senha) {
+  if (antigaSenha !== senha) {
     spanErroSenha.innerText = "A senha antiga está incorreta."
     return
   }
@@ -77,8 +79,9 @@ formSenha.addEventListener("submit", (e) => {
     return
   }
 
-  const dadosNovos = { ...dadosAntigos, senha: novaSenha }
-  localStorage.setItem("dados", JSON.stringify(dadosNovos))
+  await putAdminInfo({
+    senha: novaSenha,
+  })
 
   alert("Mudança de senha concluída com sucesso!")
   e.target.reset()
