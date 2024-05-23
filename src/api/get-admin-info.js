@@ -5,11 +5,13 @@ export async function getAdminInfo(...keys) {
   const dados = await infoRef.data()
 
   let object = dados
+
   if (keys.length) {
     object = {}
     for (let key of keys) {
       object[key] = dados[key]
     }
-    return object
   }
+
+  return object
 }
