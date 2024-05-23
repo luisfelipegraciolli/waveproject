@@ -30,12 +30,22 @@
 }
 
 .logo {
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  left: 0;
   text-align: center;
-  margin: 0 auto;
-  margin-bottom: 4.4375rem;
+  width: 100%;
+  margin-bottom: 7.5rem;
 }
+
+
+@media only screen and (max-height: 700px){
+  .logo{
+    position:  static;
+    margin-top: 7.8125rem;
+  }
+}
+
 
 .input-label-container {
   width: 100%;
