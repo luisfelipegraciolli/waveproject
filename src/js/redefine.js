@@ -1,9 +1,11 @@
+import { putAdminInfo } from "../api/put-admin-info"
+
 const form = document.getElementById("muda-senha-form")
 const inputSenha = document.getElementById("senha")
 const inputConfirmaSenha = document.getElementById("confirma-senha")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault()
 
   const senha = inputSenha.value.trim()
@@ -19,8 +21,10 @@ form.addEventListener("submit", (e) => {
     return
   }
 
-  const dados = JSON.parse(localStorage.getItem("dados"))
-  localStorage.setItem("dados", JSON.stringify({ ...dados, senha }))
+  await putAdminInfo({
+    senha,
+  })
+
   sessionStorage.removeItem("pergunta-respondida")
 
   location.href = "/login"

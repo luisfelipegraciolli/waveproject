@@ -1,3 +1,6 @@
+import { getAdminInfo } from "../api/get-admin-info.js"
+import { postAdminInfo } from "../api/post-admin-info.js"
+
 const formLogin = document.getElementById("form-principal")
 const usuarioInput = document.getElementById("usuario-input")
 const senhaInput = document.getElementById("senha-input")
@@ -11,36 +14,34 @@ senhaInput.addEventListener("focus", () => {
   spanErro.innerText = ""
 })
 
-//*cria uma primeira senha e usuario se ja nao existir no local storage
-let dados = JSON.parse(localStorage.getItem("dados"))
+let dados
+try {
+  dados = await getAdminInfo()
 
-if (!dados) {
-  dados = { usuario: "admin", senha: "admin" }
-  localStorage.setItem("dados", JSON.stringify(dados))
+  if (dados === undefined) {
+    dados = await postAdminInfo({
+      usuario: "admin",
+      senha: "admin",
+      primeiro_login: true,
+    })
+  }
+} catch (e) {
+  console.error(e)
 }
 
 formLogin.addEventListener("submit", login)
 
 function login(e) {
   e.preventDefault()
-  // TODO: Arrumar uma forma de encriptar essas infos para primeiro acesso
-  const usuario = dados.usuario
-  const senha = dados.senha
+  const { usuario, senha, primeiro_login } = dados
 
   if (!validaInput(usuarioInput, usuario) | !validaInput(senhaInput, senha)) {
     spanErro.innerText = "Usuário ou senha incorretos."
     e.target.reset()
-    return //*esse return eh pra nao continuar a funcao se der invalido.
+    return
   }
 
-  let primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login"))
-
-  if (primeiroLogin === null) {
-    primeiroLogin = true
-    localStorage.setItem("primeiro-login", primeiroLogin)
-  }
-
-  if (primeiroLogin) {
+  if (primeiro_login) {
     location.href = "/pergunta-seguranca"
   } else {
     location.href = "/"

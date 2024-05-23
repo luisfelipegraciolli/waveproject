@@ -1,14 +1,26 @@
+import { getAdminInfo } from "../api/get-admin-info.js"
+import { putAdminInfo } from "../api/put-admin-info.js"
+
 const form = document.getElementById("pergunta-seguranca-form")
 const selectPergunta = document.getElementById("pergunta")
 const selectOptions = document.querySelectorAll("#pergunta option")
 const inputResposta = document.getElementById("resposta")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
+let primeiro_login
+try {
+  primeiro_login = (await getAdminInfo("primeiro_login")).primeiro_login
+} catch (e) {
+  console.error(e)
+}
+
+if (!primeiro_login) location.href = "/"
+
 inputResposta.addEventListener("focus", () => {
   spanErro.innerText = ""
 })
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault()
 
   const indiceSelecionado = selectPergunta.value
@@ -20,9 +32,12 @@ form.addEventListener("submit", (e) => {
     return
   }
 
-  localStorage.setItem("pergunta-de-seguranca", JSON.stringify({ pergunta, resposta }))
+  await putAdminInfo({
+    pergunta_de_seguranca: { pergunta, resposta },
+    primeiro_login: false,
+  })
+
   sessionStorage.setItem("logado", true)
-  localStorage.setItem("primeiro-login", false)
 
   location.href = "/"
 })

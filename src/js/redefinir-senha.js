@@ -1,11 +1,15 @@
+import { getAdminInfo } from "../api/get-admin-info"
+
 const form = document.getElementById("pergunta-de-seguranca-form")
-const perguntaContainer = document.getElementById("pergunta-de-seguranca")
+const pergunta = document.getElementById("pergunta-de-seguranca")
 const resposta = document.getElementById("resposta")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
-const dados = JSON.parse(localStorage.getItem("pergunta-de-seguranca"))
+const { pergunta_de_seguranca } = await getAdminInfo("pergunta_de_seguranca")
 
-perguntaContainer.innerText = dados.pergunta
+const dados = pergunta_de_seguranca
+
+pergunta.innerText = dados.pergunta
 
 resposta.addEventListener("focus", () => {
   spanErro.innerText = ""
