@@ -1,3 +1,6 @@
+import { getAdminServices } from "../api/get-admin-services.js"
+import { postAdminServices } from "../api/post-admin-services.js"
+
 const formNovoServico = document.getElementById("novo-servico-form")
 const formFiltro = document.getElementById("form-filtro")
 const tbody = document.querySelector("#tabela-principal tbody")
@@ -9,14 +12,19 @@ const servico = formNovoServico["servico"]
 const categoria = formNovoServico["categoria-servico"]
 const dataHora = formNovoServico["data-hora"]
 
-let servicos = JSON.parse(localStorage.getItem("servicos")) ?? []
+let servicos = []
+try {
+  servicos = (await getAdminServices()) ?? []
+} catch (error) {
+  console.error(error)
+}
 
 exibirServicos(servicos, tbody, semServicos)
 
 formNovoServico.addEventListener("submit", adicionarServico)
 formFiltro.addEventListener("submit", filtrarServicos)
 
-function adicionarServico(e) {
+async function adicionarServico(e) {
   e.preventDefault()
 
   const inputs = {
@@ -36,9 +44,14 @@ function adicionarServico(e) {
 
   exibirServicos(servicos, tbody, semServicos)
 
-  localStorage.setItem("servicos", JSON.stringify(servicos))
-
-  alert("Serviço adicionado com sucesso!")
+  postAdminServices(inputs)
+    .then(() => {
+      alert("Serviço adicionado com sucesso!")
+    })
+    .catch((e) => {
+      alert("Ocorreu algum erro. Tente novamente.")
+      console.error(error)
+    })
 
   e.target.reset()
 }
