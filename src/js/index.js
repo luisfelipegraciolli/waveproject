@@ -8,9 +8,9 @@ const semServicos = document.getElementById("sem-servicos")
 
 const funcionario = formNovoServico.funcionario
 const cliente = formNovoServico.cliente
-const servico = formNovoServico["servico"]
-const categoria = formNovoServico["categoria-servico"]
-const dataHora = formNovoServico["data-hora"]
+const servico = formNovoServico.servico
+const categoria = formNovoServico.categoria
+const dataHora = formNovoServico.data_hora
 
 let servicos = []
 try {
@@ -61,7 +61,7 @@ function criarLinhaDaTabela(info) {
   tr.className = "linha"
   for (let [key, value] of Object.entries(info)) {
     const td = document.createElement("td")
-    if (key == "data-hora") {
+    if (key == "data_hora") {
       const dataObject = new Date(value)
       td.innerText = dataObject.toLocaleString().slice(0, -3)
       td.className = "data"
@@ -87,8 +87,8 @@ function exibirServicos(servicos, tbody, semServicos) {
   tbody.innerHTML = ""
 
   const servicosPorData = servicos.sort((a, b) => {
-    const data1 = new Date(a["data-hora"])
-    const data2 = new Date(b["data-hora"])
+    const data1 = new Date(a.data_hora)
+    const data2 = new Date(b.data_hora)
     return data2 - data1
   })
 

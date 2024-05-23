@@ -5,7 +5,8 @@ export async function getAdminServices() {
   const querySnapshot = await servicesRef.get()
   const services = []
   querySnapshot.forEach((doc) => {
-    services.push(doc.data())
+    const { funcionario, cliente, servico, categoria, data_hora } = doc.data()
+    services.push({ funcionario, cliente, servico, categoria, data_hora })
   })
   return services
 }
