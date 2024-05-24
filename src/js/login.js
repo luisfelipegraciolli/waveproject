@@ -1,17 +1,14 @@
 import { getAdminInfo } from "../api/get-admin-info.js"
 import { postAdminInfo } from "../api/post-admin-info.js"
+import { getFormData } from "./get-form-data.js"
 
 const formLogin = document.getElementById("form-principal")
-const usuarioInput = document.getElementById("usuario-input")
-const senhaInput = document.getElementById("senha-input")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
-usuarioInput.addEventListener("focus", () => {
-  spanErro.innerText = ""
-})
-
-senhaInput.addEventListener("focus", () => {
-  spanErro.innerText = ""
+formLogin.querySelectorAll("input").forEach((input) => {
+  input.addEventListener("keypress", () => {
+    spanErro.innerText = ""
+  })
 })
 
 let dados
@@ -35,9 +32,12 @@ function login(e) {
   e.preventDefault()
   const { usuario, senha, primeiro_login } = dados
 
-  if (!validaInput(usuarioInput, usuario) | !validaInput(senhaInput, senha)) {
+  const { usuario_input, senha_input } = getFormData(e.currentTarget)
+
+  if (!validaInput(usuario_input, usuario) | !validaInput(senha_input, senha)) {
     spanErro.innerText = "Usuário ou senha incorretos."
     e.target.reset()
+    e.target.querySelector("input").focus()
     return
   }
 
@@ -50,9 +50,7 @@ function login(e) {
 }
 
 function validaInput(input, esperado) {
-  const inputValue = input.value.trim()
-
-  if (inputValue !== esperado) {
+  if (input !== esperado) {
     return false
   }
 

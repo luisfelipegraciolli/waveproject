@@ -1,31 +1,32 @@
 import { getAdminInfo } from "../api/get-admin-info.js"
+import { getFormData } from "./get-form-data.js"
 
 const form = document.getElementById("pergunta-de-seguranca-form")
-const pergunta = document.getElementById("pergunta-de-seguranca")
-const resposta = document.getElementById("resposta")
+const perguntaContainer = document.getElementById("pergunta-de-seguranca")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
 const { pergunta_de_seguranca } = await getAdminInfo("pergunta_de_seguranca")
-
 const dados = pergunta_de_seguranca
 
-pergunta.innerText = dados.pergunta
+perguntaContainer.innerText = dados.pergunta
 
-resposta.addEventListener("focus", () => {
+form.querySelector("input").addEventListener("keypress", () => {
   spanErro.innerText = ""
 })
 
 form.addEventListener("submit", (e) => {
   e.preventDefault()
 
-  const inputResposta = resposta.value.trim().toLowerCase()
+  let { resposta } = getFormData(form)
 
-  if (inputResposta === "") {
+  resposta = resposta.toLowerCase()
+
+  if (resposta === "") {
     spanErro.innerText = "Insira uma resposta!"
     return
   }
 
-  if (inputResposta !== dados.resposta) {
+  if (resposta !== dados.resposta) {
     spanErro.innerText = "Resposta incorreta!"
     return
   }
