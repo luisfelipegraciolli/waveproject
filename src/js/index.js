@@ -64,7 +64,6 @@ function criarLinhaDaTabela(info) {
     if (key == "data_hora") {
       const dataObject = new Date(value)
       td.innerText = dataObject.toLocaleString().slice(0, -3)
-      td.className = "data"
     } else {
       td.innerText = value
     }
