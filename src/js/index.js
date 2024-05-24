@@ -1,16 +1,11 @@
 import { getAdminServices } from "../api/get-admin-services.js"
 import { postAdminServices } from "../api/post-admin-services.js"
+import { getFormData } from "./get-form-data.js"
 
 const formNovoServico = document.getElementById("novo-servico-form")
 const formFiltro = document.getElementById("form-filtro")
 const tbody = document.querySelector("#tabela-principal tbody")
 const semServicos = document.getElementById("sem-servicos")
-
-const funcionario = formNovoServico.funcionario
-const cliente = formNovoServico.cliente
-const servico = formNovoServico.servico
-const categoria = formNovoServico.categoria
-const dataHora = formNovoServico.data_hora
 
 let servicos = []
 try {
@@ -27,13 +22,7 @@ formFiltro.addEventListener("submit", filtrarServicos)
 async function adicionarServico(e) {
   e.preventDefault()
 
-  const inputs = {
-    [funcionario.name]: funcionario.value.trim(),
-    [cliente.name]: cliente.value.trim(),
-    [servico.name]: servico.value.trim(),
-    [categoria.name]: categoria.value.trim(),
-    [dataHora.name]: dataHora.value.trim(),
-  }
+  const inputs = getFormData(formNovoServico)
 
   tbody.parentElement.style.display = "table"
   semServicos.style.display = "none"
@@ -50,7 +39,7 @@ async function adicionarServico(e) {
     })
     .catch((e) => {
       alert("Ocorreu algum erro. Tente novamente.")
-      console.error(error)
+      console.error(e)
     })
 
   e.target.reset()
