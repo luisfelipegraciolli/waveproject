@@ -1,28 +1,44 @@
+import { getAdminInfo } from "../api/get-admin-info.js"
+import { putAdminInfo } from "../api/put-admin-info.js"
+import { getFormData } from "./get-form-data.js"
+
 const form = document.getElementById("pergunta-seguranca-form")
-const selectPergunta = document.getElementById("pergunta")
-const selectOptions = document.querySelectorAll("#pergunta option")
-const inputResposta = document.getElementById("resposta")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
-inputResposta.addEventListener("focus", () => {
+let primeiro_login
+try {
+  primeiro_login = (await getAdminInfo("primeiro_login")).primeiro_login
+} catch (e) {
+  console.error(e)
+}
+
+if (!primeiro_login) location.href = "/"
+
+form.querySelector("input").addEventListener("keypress", () => {
   spanErro.innerText = ""
 })
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault()
 
-  const indiceSelecionado = selectPergunta.value
-  const pergunta = selectOptions[indiceSelecionado].innerText.trim()
+  let { pergunta, resposta } = getFormData(form)
 
-  const resposta = inputResposta.value.trim().toLowerCase()
+  const selectOptions = e.target.querySelectorAll("option")
+  pergunta = selectOptions[pergunta].innerText.trim()
+
+  resposta = resposta.toLowerCase()
   if (resposta === "") {
     spanErro.innerText = "Insira uma resposta!"
+    e.target.querySelector("input").focus()
     return
   }
 
-  localStorage.setItem("pergunta-de-seguranca", JSON.stringify({ pergunta, resposta }))
+  await putAdminInfo({
+    pergunta_de_seguranca: { pergunta, resposta },
+    primeiro_login: false,
+  })
+
   sessionStorage.setItem("logado", true)
-  localStorage.setItem("primeiro-login", false)
 
   location.href = "/"
 })

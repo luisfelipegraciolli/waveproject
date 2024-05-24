@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>WaveLink - Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,17 +11,14 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/pergunta-seguranca.css" />
-    <script>
-      if (!JSON.parse(localStorage.getItem("primeiro-login"))) location.href = "/"
-    </script>
-    <script defer src="../js/pergunta-seguranca.js"></script>
+    <script type="module" defer src="../js/pergunta-seguranca.js"></script>
   </head>
   <body>
     <h1 class="titulo">Defina uma pergunta de segurança</h1>
 
     <form id="pergunta-seguranca-form">
       <div id="div-principal">
-        <select name="perguntas" class="input" id="pergunta" required>
+        <select name="pergunta" class="input" id="pergunta" required>
           <option value="" selected disabled>Selecione uma pergunta</option>
           <option value="1">Qual era seu esporte favorito no ensino médio?</option>
           <option value="2">Qual era o nome de seu primeiro animal de estimação?</option>
@@ -42,6 +38,7 @@
           class="input"
           type="text"
           id="resposta"
+          name="resposta"
           placeholder="Resposta..." />
         <span class="mensagem-de-erro"></span>
         <button class="botao">Entrar</button>

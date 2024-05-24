@@ -1,46 +1,47 @@
+import { getAdminInfo } from "../api/get-admin-info.js"
+import { postAdminInfo } from "../api/post-admin-info.js"
+import { getFormData } from "./get-form-data.js"
+
 const formLogin = document.getElementById("form-principal")
-const usuarioInput = document.getElementById("usuario-input")
-const senhaInput = document.getElementById("senha-input")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
-usuarioInput.addEventListener("focus", () => {
-  spanErro.innerText = ""
+formLogin.querySelectorAll("input").forEach((input) => {
+  input.addEventListener("keypress", () => {
+    spanErro.innerText = ""
+  })
 })
 
-senhaInput.addEventListener("focus", () => {
-  spanErro.innerText = ""
-})
+let dados
+try {
+  dados = await getAdminInfo()
 
-//*cria uma primeira senha e usuario se ja nao existir no local storage
-let dados = JSON.parse(localStorage.getItem("dados"))
-
-if (!dados) {
-  dados = { usuario: "admin", senha: "admin" }
-  localStorage.setItem("dados", JSON.stringify(dados))
+  if (dados === undefined) {
+    dados = await postAdminInfo({
+      usuario: "admin",
+      senha: "admin",
+      primeiro_login: true,
+    })
+  }
+} catch (e) {
+  console.error(e)
 }
 
 formLogin.addEventListener("submit", login)
 
 function login(e) {
   e.preventDefault()
-  // TODO: Arrumar uma forma de encriptar essas infos para primeiro acesso
-  const usuario = dados.usuario
-  const senha = dados.senha
+  const { usuario, senha, primeiro_login } = dados
 
-  if (!validaInput(usuarioInput, usuario) | !validaInput(senhaInput, senha)) {
+  const { usuario_input, senha_input } = getFormData(e.currentTarget)
+
+  if (!validaInput(usuario_input, usuario) | !validaInput(senha_input, senha)) {
     spanErro.innerText = "Usuário ou senha incorretos."
     e.target.reset()
-    return //*esse return eh pra nao continuar a funcao se der invalido.
+    e.target.querySelector("input").focus()
+    return
   }
 
-  let primeiroLogin = JSON.parse(localStorage.getItem("primeiro-login"))
-
-  if (primeiroLogin === null) {
-    primeiroLogin = true
-    localStorage.setItem("primeiro-login", primeiroLogin)
-  }
-
-  if (primeiroLogin) {
+  if (primeiro_login) {
     location.href = "/pergunta-seguranca"
   } else {
     location.href = "/"
@@ -49,9 +50,7 @@ function login(e) {
 }
 
 function validaInput(input, esperado) {
-  const inputValue = input.value.trim()
-
-  if (inputValue !== esperado) {
+  if (input !== esperado) {
     return false
   }
 

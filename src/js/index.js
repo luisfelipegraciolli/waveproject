@@ -1,31 +1,28 @@
+import { getAdminServices } from "../api/get-admin-services.js"
+import { postAdminServices } from "../api/post-admin-services.js"
+import { getFormData } from "./get-form-data.js"
+
 const formNovoServico = document.getElementById("novo-servico-form")
 const formFiltro = document.getElementById("form-filtro")
 const tbody = document.querySelector("#tabela-principal tbody")
 const semServicos = document.getElementById("sem-servicos")
 
-const funcionario = formNovoServico.funcionario
-const cliente = formNovoServico.cliente
-const servico = formNovoServico["servico"]
-const categoria = formNovoServico["categoria-servico"]
-const dataHora = formNovoServico["data-hora"]
-
-let servicos = JSON.parse(localStorage.getItem("servicos")) ?? []
+let servicos = []
+try {
+  servicos = (await getAdminServices()) ?? []
+} catch (error) {
+  console.error(error)
+}
 
 exibirServicos(servicos, tbody, semServicos)
 
 formNovoServico.addEventListener("submit", adicionarServico)
 formFiltro.addEventListener("submit", filtrarServicos)
 
-function adicionarServico(e) {
+async function adicionarServico(e) {
   e.preventDefault()
 
-  const inputs = {
-    [funcionario.name]: funcionario.value.trim(),
-    [cliente.name]: cliente.value.trim(),
-    [servico.name]: servico.value.trim(),
-    [categoria.name]: categoria.value.trim(),
-    [dataHora.name]: dataHora.value.trim(),
-  }
+  const inputs = getFormData(formNovoServico)
 
   tbody.parentElement.style.display = "table"
   semServicos.style.display = "none"
@@ -36,9 +33,14 @@ function adicionarServico(e) {
 
   exibirServicos(servicos, tbody, semServicos)
 
-  localStorage.setItem("servicos", JSON.stringify(servicos))
-
-  alert("Serviço adicionado com sucesso!")
+  postAdminServices(inputs)
+    .then(() => {
+      alert("Serviço adicionado com sucesso!")
+    })
+    .catch((e) => {
+      alert("Ocorreu algum erro. Tente novamente.")
+      console.error(e)
+    })
 
   e.target.reset()
 }
@@ -48,10 +50,9 @@ function criarLinhaDaTabela(info) {
   tr.className = "linha"
   for (let [key, value] of Object.entries(info)) {
     const td = document.createElement("td")
-    if (key == "data-hora") {
+    if (key == "data_hora") {
       const dataObject = new Date(value)
       td.innerText = dataObject.toLocaleString().slice(0, -3)
-      td.className = "data"
     } else {
       td.innerText = value
     }
@@ -74,8 +75,8 @@ function exibirServicos(servicos, tbody, semServicos) {
   tbody.innerHTML = ""
 
   const servicosPorData = servicos.sort((a, b) => {
-    const data1 = new Date(a["data-hora"])
-    const data2 = new Date(b["data-hora"])
+    const data1 = new Date(a.data_hora)
+    const data2 = new Date(b.data_hora)
     return data2 - data1
   })
 
@@ -96,11 +97,11 @@ function filtrarServicos(e) {
 
   if (servicos.length) {
     const servicosFiltrados = servicos.reduce((acc, servico) => {
-      if (
-        Object.values(servico)
-          .map((info) => info.toLowerCase())
-          .includes(search)
-      ) {
+      const linha = Object.values(servico).map((column) => column.toLowerCase())
+      const match = linha
+        .map((column) => column.includes(search))
+        .some((value) => value === true)
+      if (match) {
         acc.push(servico)
       }
       return acc

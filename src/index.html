@@ -12,8 +12,8 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <script defer src="js/index.js"></script>
     <script src="js/checa-login.js"></script>
+    <script type="module" defer src="js/index.js"></script>
   </head>
   <body>
     <header class="header">
@@ -62,31 +62,29 @@
           <p class="titulo" id="titulo-adicionar-servicos">Adicionar Serviços</p>
           <div class="input-label-container" id="container-linha1">
             <div class="input-label">
-              <label for="input-funcionario" class="input-label">Funcionário:</label>
+              <label for="funcionario" class="input-label">Funcionário:</label>
               <input
                 type="text"
                 class="input"
                 name="funcionario"
+                id="funcionario"
                 placeholder="Digite o nome do funcionário"
                 required />
-              <span class="mensagem-de-erro"></span>
             </div>
             <div class="input-label">
-              <label for="input-cliente" class="input-label">Cliente:</label>
+              <label for="cliente" class="input-label">Cliente:</label>
               <input
                 type="text"
                 name="cliente"
+                id="cliente"
                 class="input"
                 placeholder="Digite o nome do cliente"
                 required />
-              <span class="mensagem-de-erro"></span>
             </div>
           </div>
           <div class="input-label-container" id="container-linha2">
             <div class="input-label">
-              <label for="input-servico-prestado" class="input-label"
-                >Serviço prestado:</label
-              >
+              <label for="select-servico" class="input-label">Serviço prestado:</label>
               <select name="servico" class="input" id="select-servico" required>
                 <option value="" disabled selected>Selecione um serviço</option>
                 <option value="Telefonia Móvel">Telefonia Móvel</option>
@@ -96,17 +94,10 @@
                 <option value="Cybersegurança Avançada">Cybersegurança Avançada</option>
                 <option value="Serviços de VoIP">Serviços de VoIP</option>
               </select>
-              <span class="mensagem-de-erro"></span>
             </div>
             <div class="input-label">
-              <label for="input-categoria" class="input-label"
-                >Categoria do serviço:</label
-              >
-              <select
-                name="categoria-servico"
-                class="input"
-                id="select-categoria-servico"
-                required>
+              <label for="categoria" class="input-label">Categoria do serviço:</label>
+              <select name="categoria" id="categoria" class="input" required>
                 <option value="" disabled selected>
                   Selecione a categoria do serviço
                 </option>
@@ -114,14 +105,17 @@
                 <option value="Assistência">Assistência</option>
                 <option value="Encerramento">Encerramento</option>
               </select>
-              <span class="mensagem-de-erro"></span>
             </div>
             <div class="input-label">
-              <label for="input-data-hora" class="input-label" placeholder=""
+              <label for="data_hora" class="input-label" placeholder=""
                 >Data e hora</label
               >
-              <input name="data-hora" type="datetime-local" class="input" required />
-              <span class="mensagem-de-erro"></span>
+              <input
+                name="data_hora"
+                id="data_hora"
+                type="datetime-local"
+                class="input"
+                required />
             </div>
           </div>
           <button class="botao">Adicionar</button>

@@ -1,26 +1,28 @@
+import { putAdminInfo } from "../api/put-admin-info.js"
+import { getFormData } from "./get-form-data.js"
+
 const form = document.getElementById("muda-senha-form")
-const inputSenha = document.getElementById("senha")
-const inputConfirmaSenha = document.getElementById("confirma-senha")
 const spanErro = document.querySelector(".mensagem-de-erro")
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault()
 
-  const senha = inputSenha.value.trim()
-  const confirmaSenha = inputConfirmaSenha.value.trim()
+  const { senha, confirma_senha } = getFormData(form)
 
   if (senha === "") {
     spanErro.innerText = "Digite algo!"
     return
   }
 
-  if (senha !== confirmaSenha) {
+  if (senha !== confirma_senha) {
     spanErro.innerText = "As senhas não correspondem!"
     return
   }
 
-  const dados = JSON.parse(localStorage.getItem("dados"))
-  localStorage.setItem("dados", JSON.stringify({ ...dados, senha }))
+  await putAdminInfo({
+    senha,
+  })
+
   sessionStorage.removeItem("pergunta-respondida")
 
   location.href = "/login"
