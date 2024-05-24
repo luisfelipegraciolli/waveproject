@@ -25,10 +25,8 @@ form button {
   max-width: 200px;
 }
 
-
-@media only screen and (max-width: 600px){
-  /* Principal */
-  .forms-container{
+@media only screen and (max-width: 600px) {
+  .forms-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -36,17 +34,16 @@ form button {
     align-items: center;
     gap: 2rem;
   }
-  main{
+  main {
     justify-content: center;
     align-items: center;
   }
-  form{
+  form {
     width: 100%;
   }
-  
-  @media only screen and (orientation: landscape){
-    /* Principal */
-    .forms-container{
+
+  @media only screen and (orientation: landscape) {
+    .forms-container {
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -54,11 +51,11 @@ form button {
       align-items: center;
       gap: 2rem;
     }
-    main{
+    main {
       justify-content: center;
       align-items: center;
     }
-    form{
+    form {
       width: 100%;
     }
   }

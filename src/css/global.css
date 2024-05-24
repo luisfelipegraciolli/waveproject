@@ -44,14 +44,11 @@
   color: var(--cor-texto);
 }
 
-/* * Em volta de varios conjuntos (label+input) ou de varios inputs, pra espacar eles */
 .input-label-container {
   display: grid;
   gap: 1rem;
 }
 
-/* * Em volta de um unico conjunto (label+input), pra espacar a label e o input */
-/*!usar so se tiver label junto do input*/
 .input-label {
   display: grid;
   gap: 0.5rem;
@@ -62,7 +59,6 @@
   font-size: 1.7rem;
 }
 
-/** colocar diretamente no input para formatar ele*/
 .input {
   padding: 0.6rem 0.8rem;
   border: 0.9px solid var(--cor-fundo);
@@ -78,7 +74,6 @@
   outline: 1px solid var(--cor-fundo);
 }
 
-/** Essa aqui eh pras mensagens de erro que sao incluidas via JS*/
 .mensagem-de-erro {
   color: red;
   font-size: 0.7rem;
@@ -112,7 +107,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-  /*Header*/
   .header nav a {
     font-size: 1rem;
   }
