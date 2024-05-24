@@ -1,4 +1,4 @@
-import { getAdminInfo } from "../api/get-admin-info.js"
+import { getAdminInfo } from "./api/get-admin-info.js"
 import { getFormData } from "./get-form-data.js"
 
 const form = document.getElementById("pergunta-de-seguranca-form")
