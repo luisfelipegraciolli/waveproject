@@ -41,13 +41,23 @@ option{
     margin-top: 1rem;
 }
 
-.logo{
-    position: absolute; 
+.logo {
+    position: fixed;
     bottom: 0;
+    left: 0;
     text-align: center;
-    margin: 0 auto;
-    margin-bottom: 4.4375rem;
-}
+    width: 100%;
+    margin-bottom: 7.5rem;
+    padding: 0 6%;
+  }
+  
+  
+  @media only screen and (max-height: 700px){
+    .logo{
+      position:  static;
+      margin-top: 7.8125rem;
+    }
+  }
 
 
 @media only screen and (max-width: 600px){
