@@ -41,6 +41,7 @@
 }
 
 .input-label-container {
+  text-wrap: nowrap;
   display: flex;
   justify-content: space-between;
   gap: 3rem;
@@ -117,6 +118,20 @@ td {
     .container-principal {
       padding: 3rem 5rem 3rem 5rem;
     }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .input-label-container:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .input-label-container:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 
