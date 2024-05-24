@@ -1,4 +1,4 @@
-import { getAdminInfo } from "../api/get-admin-info.js"
+import { getAdminInfo } from "./api/get-admin-info.js"
 
 const logado = JSON.parse(sessionStorage.getItem("logado"))
 

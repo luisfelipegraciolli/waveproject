@@ -1,4 +1,4 @@
-import { putAdminInfo } from "../api/put-admin-info.js"
+import { putAdminInfo } from "./api/put-admin-info.js"
 import { getFormData } from "./get-form-data.js"
 
 const form = document.getElementById("muda-senha-form")

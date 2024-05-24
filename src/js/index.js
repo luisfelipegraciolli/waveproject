@@ -1,5 +1,5 @@
-import { getAdminServices } from "../api/get-admin-services.js"
-import { postAdminServices } from "../api/post-admin-services.js"
+import { getAdminServices } from "./api/get-admin-services.js"
+import { postAdminServices } from "./api/post-admin-services.js"
 import { getFormData } from "./get-form-data.js"
 
 const formNovoServico = document.getElementById("novo-servico-form")

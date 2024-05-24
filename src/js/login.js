@@ -1,5 +1,5 @@
-import { getAdminInfo } from "../api/get-admin-info.js"
-import { postAdminInfo } from "../api/post-admin-info.js"
+import { getAdminInfo } from "./api/get-admin-info.js"
+import { postAdminInfo } from "./api/post-admin-info.js"
 import { getFormData } from "./get-form-data.js"
 
 const formLogin = document.getElementById("form-principal")
