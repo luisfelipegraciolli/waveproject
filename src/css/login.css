@@ -45,17 +45,16 @@ main {
   }
 
   #imagem-principal{
-    width: 0%;
-    height: 0%;
+    display: none;
   }
-  @media only screen and (orientation: landscape){
-    #wrapper-form-login{
-      width: 100%;
-    }
-  
-    #imagem-principal{
-      width: 0%;
-      height: 0%;
-    }
+
+}
+@media only screen and (orientation:landscape) and (max-width: 900px) and (max-height: 600px) {
+  #wrapper-form-login{
+    width: 100%;
+  }
+
+  #imagem-principal{
+    display: none;
   }
 }
