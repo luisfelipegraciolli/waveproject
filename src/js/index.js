@@ -1,9 +1,11 @@
 import { getAdminServices } from "./api/get-admin-services.js"
 import { postAdminServices } from "./api/post-admin-services.js"
 import { getFormData } from "./get-form-data.js"
+import { deleteAdminService } from "./api/delete-admin-service.js"
 
 const formNovoServico = document.getElementById("novo-servico-form")
 const formFiltro = document.getElementById("form-filtro")
+const botaoExcluir = document.getElementById("delete")
 const tbody = document.querySelector("#tabela-principal tbody")
 const semServicos = document.getElementById("sem-servicos")
 
@@ -18,6 +20,26 @@ exibirServicos(servicos, tbody, semServicos)
 
 formNovoServico.addEventListener("submit", adicionarServico)
 formFiltro.addEventListener("submit", filtrarServicos)
+botaoExcluir.addEventListener("click", excluirServicos)
+
+function excluirServicos() {
+  if (confirm("Deseja excluir TODOS os serviços registrados?")) {
+    deleteAdminService()
+    servicos = []
+    exibirServicos(servicos, tbody, semServicos)
+  }
+}
+
+function excluirUnicoServico(id) {
+  const opt = confirm("Deseja deletar o serviço?")
+  if (opt) {
+    deleteAdminService(id)
+    servicos = servicos.filter((servico) => servico.id !== id)
+    exibirServicos(servicos, tbody, semServicos)
+  } else {
+    alert("O serviço não foi deletado.")
+  }
+}
 
 async function adicionarServico(e) {
   e.preventDefault()
@@ -48,7 +70,9 @@ async function adicionarServico(e) {
 function criarLinhaDaTabela(info) {
   const tr = document.createElement("tr")
   tr.className = "linha"
-  for (let [key, value] of Object.entries(info)) {
+  tr.onclick = () => excluirUnicoServico(info.id)
+  const entries = Object.entries(info).filter((entry) => entry[0] != "id")
+  for (let [key, value] of entries) {
     const td = document.createElement("td")
     if (key == "data_hora") {
       const dataObject = new Date(value)
