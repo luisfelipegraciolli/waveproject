@@ -49,20 +49,17 @@ async function adicionarServico(e) {
   tbody.parentElement.style.display = "table"
   semServicos.style.display = "none"
 
-  servicos = [...servicos, inputs]
-
   formFiltro.filtro.value = ""
 
-  exibirServicos(servicos, tbody, semServicos)
-
-  postAdminServices(inputs)
-    .then(() => {
-      alert("Serviço adicionado com sucesso!")
-    })
-    .catch((e) => {
-      alert("Ocorreu algum erro. Tente novamente.")
-      console.error(e)
-    })
+  try {
+    const id = await postAdminServices(inputs)
+    servicos = [...servicos, { ...inputs, id }]
+    exibirServicos(servicos, tbody, semServicos)
+    alert("Serviço adicionado com sucesso!")
+  } catch (error) {
+    alert("Ocorreu algum erro. Tente novamente.")
+    console.error(e)
+  }
 
   e.target.reset()
 }
