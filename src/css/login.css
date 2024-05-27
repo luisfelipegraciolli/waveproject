@@ -29,6 +29,10 @@ main {
   height: 100%;
 }
 
+#form-principal footer{
+  text-align: center;
+}
+
 #form-principal button {
   margin: 0 auto;
   width: 11rem;
