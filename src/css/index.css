@@ -31,6 +31,10 @@
   font-size: 1rem;
 }
 
+#delete {
+  background-color: rgb(190, 0, 0);
+}
+
 .titulo-container .input {
   height: unset;
 }
@@ -97,6 +101,14 @@ th {
 
 td {
   color: var(--cor-texto);
+}
+
+.linha {
+  transition: all 0.1s;
+}
+
+.linha:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 @media only screen and (max-width: 600px) {

@@ -6,7 +6,7 @@ export async function getAdminServices() {
   const services = []
   querySnapshot.forEach((doc) => {
     const { funcionario, cliente, servico, categoria, data_hora } = doc.data()
-    services.push({ funcionario, cliente, servico, categoria, data_hora })
+    services.push({ funcionario, cliente, servico, categoria, data_hora, id: doc.id })
   })
   return services
 }
