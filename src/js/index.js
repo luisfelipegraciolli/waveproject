@@ -204,7 +204,9 @@ function filtrarServicos(e) {
 
   if (servicos.length) {
     const servicosFiltrados = servicos.reduce((acc, servico) => {
-      const linha = Object.values(servico).map((column) => column.toLowerCase())
+      const linha = Object.entries(servico)
+        .filter(([key, _]) => key !== "id")
+        .map(([_, column]) => column.toLowerCase())
       const match = linha
         .map((column) => column.includes(search))
         .some((value) => value === true)
