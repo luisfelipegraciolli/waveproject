@@ -2,8 +2,11 @@ import { getAdminServices } from "./api/get-admin-services.js"
 import { postAdminServices } from "./api/post-admin-services.js"
 import { getFormData } from "./get-form-data.js"
 import { deleteAdminService } from "./api/delete-admin-service.js"
+import { putAdminServices } from "./api/put-admin-services.js"
 
 const formNovoServico = document.getElementById("novo-servico-form")
+const tituloForm = document.getElementById("titulo-form")
+const botaoForm = formNovoServico.querySelector(".botao")
 const formFiltro = document.getElementById("form-filtro")
 const botaoExcluir = document.getElementById("delete")
 const tbody = document.querySelector("#tabela-principal tbody")
@@ -18,7 +21,17 @@ try {
 
 exibirServicos(servicos, tbody, semServicos)
 
-formNovoServico.addEventListener("submit", adicionarServico)
+formNovoServico.addEventListener("submit", (e) => {
+  e.preventDefault()
+  const serviceId = e.currentTarget.dataset.serviceId
+  if (!serviceId) {
+    adicionarServico(e)
+  } else {
+    editarServico(e, serviceId)
+  }
+  scroll(0, 0)
+})
+
 formFiltro.addEventListener("submit", filtrarServicos)
 botaoExcluir.addEventListener("click", excluirServicos)
 
@@ -42,8 +55,6 @@ function excluirUnicoServico(id) {
 }
 
 async function adicionarServico(e) {
-  e.preventDefault()
-
   const inputs = getFormData(formNovoServico)
 
   tbody.parentElement.style.display = "table"
@@ -55,12 +66,32 @@ async function adicionarServico(e) {
     const id = await postAdminServices(inputs)
     servicos = [...servicos, { ...inputs, id }]
     exibirServicos(servicos, tbody, semServicos)
-    alert("Serviço adicionado com sucesso!")
+  } catch (error) {
+    alert("Ocorreu algum erro. Tente novamente.")
+    console.error(error)
+  }
+
+  e.target.reset()
+}
+
+async function editarServico(e, id) {
+  const inputs = getFormData(formNovoServico)
+
+  formFiltro.filtro.value = ""
+
+  try {
+    const novosDados = await putAdminServices(inputs, id)
+    servicos = [...servicos.filter((servico) => servico.id !== id), { ...novosDados, id }]
+    exibirServicos(servicos, tbody, semServicos)
   } catch (error) {
     alert("Ocorreu algum erro. Tente novamente.")
     console.error(e)
   }
 
+  tituloForm.innerText = "Adicionar serviço"
+  botaoForm.innerText = "Adicionar"
+
+  delete e.target.dataset.serviceId
   e.target.reset()
 }
 
@@ -110,6 +141,17 @@ function criarPopover({ id }) {
   const editar = document.createElement("div")
   editar.innerText = "Editar serviço"
   editar.classList.add("popover-option")
+  editar.addEventListener("click", async () => {
+    const data = await getAdminServices(id)
+    Object.entries(data).forEach(([key, value]) => {
+      if (key !== "id") formNovoServico[key].value = value
+    })
+    formNovoServico.dataset.serviceId = id
+    tituloForm.innerText = "Editar serviço"
+    botaoForm.innerText = "Editar"
+    formNovoServico.scrollIntoView()
+    formNovoServico.funcionario.focus()
+  })
   const excluir = document.createElement("div")
   excluir.innerText = "Excluir serviço"
   excluir.classList.add("popover-option")
