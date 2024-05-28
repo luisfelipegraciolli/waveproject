@@ -88,11 +88,7 @@ async function editarServico(e, id) {
     console.error(e)
   }
 
-  tituloForm.innerText = "Adicionar serviço"
-  botaoForm.innerText = "Adicionar"
-
-  delete e.target.dataset.serviceId
-  e.target.reset()
+  mudaFormulario()
 }
 
 function criarLinhaDaTabela(info) {
@@ -142,15 +138,7 @@ function criarPopover({ id }) {
   editar.innerText = "Editar serviço"
   editar.classList.add("popover-option")
   editar.addEventListener("click", async () => {
-    const data = await getAdminServices(id)
-    Object.entries(data).forEach(([key, value]) => {
-      if (key !== "id") formNovoServico[key].value = value
-    })
-    formNovoServico.dataset.serviceId = id
-    tituloForm.innerText = "Editar serviço"
-    botaoForm.innerText = "Editar"
-    formNovoServico.scrollIntoView()
-    formNovoServico.funcionario.focus()
+    mudaFormulario(true, id)
   })
   const excluir = document.createElement("div")
   excluir.innerText = "Excluir serviço"
@@ -224,5 +212,36 @@ function filtrarServicos(e) {
     exibirServicos(servicosFiltrados, tbody, semServicos)
     if (!servicosFiltrados.length)
       semServicos.innerText = "Não existem serviços cadastrados com essa informação!"
+  }
+}
+
+async function mudaFormulario(editar, id) {
+  if (editar) {
+    const data = await getAdminServices(id)
+    Object.entries(data).forEach(([key, value]) => {
+      if (key !== "id") formNovoServico[key].value = value
+    })
+    formNovoServico.dataset.serviceId = id
+    tituloForm.innerText = "Editar serviço (Esc para cancelar)"
+    const interrompeEdicao = (e) => {
+      if (e.key == "Escape") {
+        mudaFormulario()
+        document.removeEventListener("keydown", interrompeEdicao)
+        alert("Edição interrompida.")
+      }
+    }
+    document.addEventListener("keydown", interrompeEdicao)
+
+    botaoForm.innerText = "Editar"
+    formNovoServico.scrollIntoView()
+    formNovoServico.funcionario.focus()
+  } else {
+    scroll(0, 0)
+
+    tituloForm.innerText = "Adicionar serviço"
+    botaoForm.innerText = "Adicionar"
+
+    delete formNovoServico.dataset.serviceId
+    formNovoServico.reset()
   }
 }
