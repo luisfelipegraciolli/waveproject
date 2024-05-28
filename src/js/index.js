@@ -68,6 +68,24 @@ function criarLinhaDaTabela(info) {
   const tr = document.createElement("tr")
   tr.className = "linha"
   tr.onclick = () => excluirUnicoServico(info.id)
+
+  tr.popovertarget = info.id
+  const popover = criarPopover({
+    id: info.id,
+  })
+  document.body.appendChild(popover)
+  tr.addEventListener("contextmenu", (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const { x, y } = e
+
+    const left = x
+    const top = y + window.scrollY
+    popover.style.left = left + "px"
+    popover.style.top = top + "px"
+    popover.showPopover()
+  })
+
   const entries = Object.entries(info).filter((entry) => entry[0] != "id")
   for (let [key, value] of entries) {
     const td = document.createElement("td")
@@ -82,7 +100,33 @@ function criarLinhaDaTabela(info) {
   return tr
 }
 
+function criarPopover({ id }) {
+  const popover = document.createElement("div")
+
+  popover.classList.add("popover")
+
+  popover.popover = ""
+  popover.id = id
+
+  const editar = document.createElement("div")
+  editar.innerText = "Editar serviço"
+  editar.classList.add("popover-option")
+  const excluir = document.createElement("div")
+  excluir.innerText = "Excluir serviço"
+  excluir.classList.add("popover-option")
+
+  popover.appendChild(editar)
+  popover.appendChild(excluir)
+
+  return popover
+}
+
 function exibirServicos(servicos, tbody, semServicos) {
+  const antigosPopovers = document.querySelectorAll("[popover]")
+  if (antigosPopovers.length) {
+    antigosPopovers.forEach((popover) => popover.remove())
+  }
+
   if (!servicos.length) {
     tbody.parentElement.style.display = "none"
     semServicos.style.display = "block"
