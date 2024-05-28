@@ -67,7 +67,6 @@ async function adicionarServico(e) {
 function criarLinhaDaTabela(info) {
   const tr = document.createElement("tr")
   tr.className = "linha"
-  tr.onclick = () => excluirUnicoServico(info.id)
 
   tr.popovertarget = info.id
   const popover = criarPopover({
@@ -114,6 +113,7 @@ function criarPopover({ id }) {
   const excluir = document.createElement("div")
   excluir.innerText = "Excluir serviço"
   excluir.classList.add("popover-option")
+  excluir.onclick = () => excluirUnicoServico(id)
 
   popover.appendChild(editar)
   popover.appendChild(excluir)
