@@ -206,7 +206,13 @@ function filtrarServicos(e) {
     const servicosFiltrados = servicos.reduce((acc, servico) => {
       const linha = Object.entries(servico)
         .filter(([key, _]) => key !== "id")
-        .map(([_, column]) => column.toLowerCase())
+        .map(([key, column]) => {
+          if (key == "data_hora") {
+            return new Date(column).toLocaleString().slice(0, -3)
+          }
+          return column.toLowerCase()
+        })
+      console.log(linha)
       const match = linha
         .map((column) => column.includes(search))
         .some((value) => value === true)
