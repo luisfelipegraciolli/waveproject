@@ -150,6 +150,8 @@ function criarPopover({ id }) {
   excluir.classList.add("popover-option")
   excluir.onclick = () => excluirUnicoServico(id)
 
+  popover.onclick = popover.hidePopover
+
   popover.appendChild(editar)
   popover.appendChild(excluir)
 
