@@ -46,25 +46,7 @@ formNovoServico.addEventListener("submit", (e) => {
 formFiltro.addEventListener("submit", filtrarServicos)
 botaoExcluir.addEventListener("click", excluirServicos)
 
-function excluirServicos() {
-  if (confirm("Deseja excluir TODOS os serviços registrados?")) {
-    deleteAdminService()
-    servicos = []
-    exibirServicos(servicos, tbody, semServicos)
-  }
-}
-
-function excluirUnicoServico(id) {
-  const opt = confirm("Deseja deletar o serviço?")
-  if (opt) {
-    deleteAdminService(id)
-    servicos = servicos.filter((servico) => servico.id !== id)
-    exibirServicos(servicos, tbody, semServicos)
-  } else {
-    alert("O serviço não foi deletado.")
-  }
-}
-
+//! CRUD dos servicos
 async function adicionarServico(e) {
   const inputs = getFormData(formNovoServico)
 
@@ -85,6 +67,70 @@ async function adicionarServico(e) {
   e.target.reset()
 }
 
+function exibirServicos(servicos, tbody, semServicos) {
+  const antigosPopovers = document.querySelectorAll("[popover]")
+  if (antigosPopovers.length) {
+    antigosPopovers.forEach((popover) => popover.remove())
+  }
+
+  if (!servicos.length) {
+    tbody.parentElement.style.display = "none"
+    semServicos.style.display = "block"
+    semServicos.innerText = "Ainda não há serviços cadastrados!"
+    return
+  } else {
+    tbody.parentElement.style.display = "table"
+    semServicos.style.display = "none"
+  }
+
+  tbody.innerHTML = ""
+
+  const servicosPorData = servicos.sort((a, b) => {
+    const data1 = new Date(a.data_hora)
+    const data2 = new Date(b.data_hora)
+    return data2 - data1
+  })
+
+  for (let info of servicosPorData) {
+    const tr = criarLinhaDaTabela(info)
+    tbody.appendChild(tr)
+  }
+}
+
+function filtrarServicos(e) {
+  e.preventDefault()
+  const form = e.target
+  const search = form.filtro.value.trim().toLowerCase()
+  if (search === "") {
+    exibirServicos(servicos, tbody, semServicos)
+    return
+  }
+
+  if (servicos.length) {
+    const servicosFiltrados = servicos.reduce((acc, servico) => {
+      const linha = Object.entries(servico)
+        .filter(([key, _]) => key !== "id")
+        .map(([key, column]) => {
+          if (key == "data_hora") {
+            return new Date(column).toLocaleString().slice(0, -3)
+          }
+          return column.toLowerCase()
+        })
+      console.log(linha)
+      const match = linha
+        .map((column) => column.includes(search))
+        .some((value) => value === true)
+      if (match) {
+        acc.push(servico)
+      }
+      return acc
+    }, [])
+    exibirServicos(servicosFiltrados, tbody, semServicos)
+    if (!servicosFiltrados.length)
+      semServicos.innerText = "Não existem serviços cadastrados com essa informação!"
+  }
+}
+
 async function editarServico(e, id) {
   const inputs = getFormData(formNovoServico)
 
@@ -102,6 +148,26 @@ async function editarServico(e, id) {
   mudaFormulario()
 }
 
+function excluirServicos() {
+  if (confirm("Deseja excluir TODOS os serviços registrados?")) {
+    deleteAdminService()
+    servicos = []
+    exibirServicos(servicos, tbody, semServicos)
+  }
+}
+
+function excluirUnicoServico(id) {
+  const opt = confirm("Deseja deletar o serviço?")
+  if (opt) {
+    deleteAdminService(id)
+    servicos = servicos.filter((servico) => servico.id !== id)
+    exibirServicos(servicos, tbody, semServicos)
+  } else {
+    alert("O serviço não foi deletado.")
+  }
+}
+
+//! Auxiliares para a tabela
 function criarLinhaDaTabela(info) {
   const tr = document.createElement("tr")
   tr.className = "linha"
@@ -177,70 +243,7 @@ function mostrarPopover({ pageX, pageY, popover }) {
   popover.showPopover()
 }
 
-function exibirServicos(servicos, tbody, semServicos) {
-  const antigosPopovers = document.querySelectorAll("[popover]")
-  if (antigosPopovers.length) {
-    antigosPopovers.forEach((popover) => popover.remove())
-  }
-
-  if (!servicos.length) {
-    tbody.parentElement.style.display = "none"
-    semServicos.style.display = "block"
-    semServicos.innerText = "Ainda não há serviços cadastrados!"
-    return
-  } else {
-    tbody.parentElement.style.display = "table"
-    semServicos.style.display = "none"
-  }
-
-  tbody.innerHTML = ""
-
-  const servicosPorData = servicos.sort((a, b) => {
-    const data1 = new Date(a.data_hora)
-    const data2 = new Date(b.data_hora)
-    return data2 - data1
-  })
-
-  for (let info of servicosPorData) {
-    const tr = criarLinhaDaTabela(info)
-    tbody.appendChild(tr)
-  }
-}
-
-function filtrarServicos(e) {
-  e.preventDefault()
-  const form = e.target
-  const search = form.filtro.value.trim().toLowerCase()
-  if (search === "") {
-    exibirServicos(servicos, tbody, semServicos)
-    return
-  }
-
-  if (servicos.length) {
-    const servicosFiltrados = servicos.reduce((acc, servico) => {
-      const linha = Object.entries(servico)
-        .filter(([key, _]) => key !== "id")
-        .map(([key, column]) => {
-          if (key == "data_hora") {
-            return new Date(column).toLocaleString().slice(0, -3)
-          }
-          return column.toLowerCase()
-        })
-      console.log(linha)
-      const match = linha
-        .map((column) => column.includes(search))
-        .some((value) => value === true)
-      if (match) {
-        acc.push(servico)
-      }
-      return acc
-    }, [])
-    exibirServicos(servicosFiltrados, tbody, semServicos)
-    if (!servicosFiltrados.length)
-      semServicos.innerText = "Não existem serviços cadastrados com essa informação!"
-  }
-}
-
+//! Auxiliares para o formulario
 async function mudaFormulario(editar, id) {
   if (editar) {
     const data = await getAdminServices(id)
