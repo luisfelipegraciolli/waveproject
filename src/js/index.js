@@ -21,8 +21,19 @@ try {
 
 exibirServicos(servicos, tbody, semServicos)
 
+const dataHoraInput = formNovoServico.data_hora
+
+dataHoraInput.addEventListener("change", () => {
+  if (!dataHoraInput.reportValidity()) dataHoraInput.setCustomValidity("")
+})
+
 formNovoServico.addEventListener("submit", (e) => {
   e.preventDefault()
+  if (dataHoraInput.value.split("-")[0].length > 4) {
+    dataHoraInput.setCustomValidity("O ano deve ter somente 4 dígitos!")
+    dataHoraInput.reportValidity()
+    return
+  }
   const serviceId = e.currentTarget.dataset.serviceId
   if (!serviceId) {
     adicionarServico(e)
