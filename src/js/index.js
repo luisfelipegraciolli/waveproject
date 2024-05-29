@@ -119,13 +119,13 @@ function criarLinhaDaTabela(info) {
   tr.addEventListener("auxclick", (e) => {
     e.preventDefault()
     e.stopPropagation()
-    const { x, y } = e
+    const { pageX, pageY } = e
+    mostrarPopover({ pageX, pageY, popover })
+  })
 
-    const left = x
-    const top = y + window.scrollY
-    popover.style.left = left + "px"
-    popover.style.top = top + "px"
-    popover.showPopover()
+  tr.addEventListener("dblclick", (e) => {
+    const { pageX, pageY } = e
+    mostrarPopover({ pageX, pageY, popover })
   })
 
   const entries = Object.entries(info).filter((entry) => entry[0] != "id")
@@ -167,6 +167,14 @@ function criarPopover({ id }) {
   popover.appendChild(excluir)
 
   return popover
+}
+
+function mostrarPopover({ pageX, pageY, popover }) {
+  const left = pageX
+  const top = pageY
+  popover.style.left = left + "px"
+  popover.style.top = top + "px"
+  popover.showPopover()
 }
 
 function exibirServicos(servicos, tbody, semServicos) {
