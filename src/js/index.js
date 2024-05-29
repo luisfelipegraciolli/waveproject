@@ -243,7 +243,7 @@ async function mudaFormulario(editar, id) {
   } else {
     scroll(0, 0)
 
-    tituloForm.innerText = "Adicionar serviço"
+    tituloForm.innerText = "Adicionar Serviços"
     botaoForm.innerText = "Adicionar"
 
     delete formNovoServico.dataset.serviceId
