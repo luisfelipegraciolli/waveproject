@@ -103,6 +103,11 @@ function criarLinhaDaTabela(info) {
   tr.addEventListener("contextmenu", (e) => {
     e.preventDefault()
     e.stopPropagation()
+  })
+
+  tr.addEventListener("auxclick", (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     const { x, y } = e
 
     const left = x
@@ -131,7 +136,7 @@ function criarPopover({ id }) {
 
   popover.classList.add("popover")
 
-  popover.popover = ""
+  popover.popover = "auto"
   popover.id = id
 
   const editar = document.createElement("div")
