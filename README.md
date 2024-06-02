@@ -17,7 +17,7 @@ Ao todo, o projeto possui 6 páginas:
 
 1. Login
 
-<img src="assets/login.png" alt="Página de login" text="Página de login" style="width: 835px"/>
+<img src="assets/login.png" alt="Página de login" text="Página de login" style="width: 600px"/>
 
 Por padrão, o nome de usuário e senha são definidos como “admin”. 
 
@@ -82,7 +82,7 @@ Cada pasta do projeto é representada por “/nome_da_pasta”. Os textos com fu
     <li>MD: Arquivo de texto simples com uma sintaxe de formatação básica.</li>
 </ul>
 
-<img src="assets/diretorios.png" alt="Diretórios do projeto exibido em um mapa mental" text="Diretórios do projeto"/>
+<img src="assets/diretorios.png" alt="Diretórios do projeto exibido em um mapa mental" text="Diretórios do projeto" style="height: 900px"/>
 
 <ul>
     <li>/waveproject – É o diretório raiz do projeto, nele está contido todos os arquivos e pastas fundamentais para o funcionamento ideal do sistema.</li>
@@ -106,30 +106,6 @@ Cada pasta do projeto é representada por “/nome_da_pasta”. Os textos com fu
             <li>index.html – Arquivo referente à página principal do projeto.</li>
         </ul>
     </li>
-</ul>
-
-<ul>
-  <li>/waveproject – É o diretório raiz do projeto, nele está contido todos os arquivos e pastas fundamentais para o funcionamento ideal do sistema.</li>
-  <li>README.md – Fornece uma breve sinopse sobre o que se trata o projeto.</li>
-  <li>prettierrc – Arquivo de configuração da extensão Prettier.</li>
-  <li>/assets – Pasta que armazena todas as imagens utilizadas no arquivo README.md.</li>
-  <li>/src – Armazena todos os códigos fonte do sistema.
-    <ul>
-      <li>/css – Acumula todos os arquivos CSS necessários para o funcionamento do projeto.</li>
-      <li>/editar-perfil – Pasta que armazena o arquivo HTML da página de editar perfil.</li>
-      <li>/login – Contém o arquivo HTML da página de login.</li>
-      <li>/pergunta-seguranca – Armazena o arquivo HTML da página de pergunta de segurança.</li>
-      <li>/redefinir-senha – Pasta que contém os arquivos HTML das páginas relacionadas à redefinição da senha do usuário.</li>
-      <li>/js – Concentra todos os arquivos JavaScript necessários para o funcionamento do projeto.
-        <ul>
-          <li>/api – Pasta que acumula os arquivos JavaScript referentes às funcionalidades do Cloud Firestore que estão sendo utilizadas no projeto.</li>
-          <li>/lib – Pasta que armazena o arquivo JavaScript que inicializa o Cloud Firestore, serviço do Google Firebase necessário para armazenamento dos dados do usuário.</li>
-        </ul>
-      </li>
-      <li>favicon.ico – Ícone utilizado na guia do navegador.</li>
-      <li>index.html – Arquivo referente à página principal do projeto.</li>
-    </ul>
-  </li>
 </ul>
 
 ## Script de segurança
