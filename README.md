@@ -17,55 +17,77 @@ Ao todo, o projeto possui 6 páginas:
 
 1. Login
 
-<img src="assets/login.png" alt="Página de login" text="Página de login" style="width: 700px"/>
+<div align="center">
+    <img src="assets/login.png" alt="Página de login" text="Página de login" style="width: 700px"/>
+</div>
 
 Por padrão, o nome de usuário e senha são definidos como “admin”. 
 
 2. Definição de pergunta de segurança
 
-<img src="assets/definir-pergunta-seguranca.png" alt="Página para definir pergunta de segurança" text="Página para escolha da pergunta de segurança" style="width: 700px"/>
+<div align="center">
+    <img src="assets/definir-pergunta-seguranca.png" alt="Página para definir pergunta de segurança" text="Página para escolha da pergunta de segurança" style="width: 700px"/>
+</div>
 
 Para realizar a recuperação de senha, foi adotado o mecanismo da pergunta de segurança. Após o primeiro login no sistema, será necessário escolher uma pergunta de segurança e definir uma resposta. Essa pergunta voltará a aparecer caso o usuário clique em “Esqueceu a senha?” na página de login.
 
 3. Recuperação de senha 1
 
-<img src="assets/redefinir-senha.png" alt="Primeira página de redefinição de senha" text="Primeira página de redefinição de senha" style="width: 700px"/>
+<div align="center">
+    <img src="assets/redefinir-senha.png" alt="Primeira página de redefinição de senha" text="Primeira página de redefinição de senha" style="width: 700px"/>
+</div>
 
 No caso acima, a pergunta de segurança escolhida foi “Qual é sua comida favorita?”. No entanto, a pergunta que irá ser exibida depende da escolha do usuário.
 
 4. Recuperação de senha 2
 
-<img src="assets/redefinir-senha-2.png" alt="Segunda página de redefinição de senha" text="Segunda página de redefinição de senha" style="width: 700px"/>
+<div align="center">
+    <img src="assets/redefinir-senha-2.png" alt="Segunda página de redefinição de senha" text="Segunda página de redefinição de senha" style="width: 700px"/>
+</div>
 
 Aqui, o usuário poderá completar o processo para realizar a troca de senha, digitando a sua nova senha duas vezes.
 
 5. Página principal
 
-<img src="assets/principal.png" alt="Página principal" text="Página principal" style="width: 700px"/>
+<div align="center">
+    <img src="assets/principal.png" alt="Página principal" text="Página principal" style="width: 700px"/>
+</div>
 
 A página principal exibe a tabela de dados e o bloco para adicionar serviços. Para editar algum serviço que já foi lançado na tabela, basta ir até a linha e clicar com o botão direito do mouse (caso esteja utilizando um computador) e selecionar “Editar Serviço”. 
 
-<img src="assets/menu-flutuante.png" alt="Tabela com alguns serviços adicionados" text="Serviços prestados" style="width: 700px"/>
+<div align="center">
+    <img src="assets/menu-flutuante.png" alt="Tabela com alguns serviços adicionados" text="Serviços prestados" style="width: 700px"/>
+</div>
 
 Depois, os dados da linha que será editada aparecerão nos campos do bloco “Adicionar serviço” que, apenas durante esse momento de edição, irá ser denominado como “Editar serviço”. Com isso, o usuário poderá mudar os dados e clicar no botão “Editar” ou pressionar a tecla Esc para cancelar a ação. 
 
-<img src="assets/editar-servico.png" alt="Área para editar serviço salvo" text="Área para editar serviços" style="width: 700px"/>
+<div align="center">
+    <img src="assets/editar-servico.png" alt="Área para editar serviço salvo" text="Área para editar serviços" style="width: 700px"/>
+</div>
 
 Caso a ação seja feita em um celular, o usuário deverá clicar duas vezes na linha que deseja editar para o menu flutuante aparecer. Para cancelar a ação, basta tocar no botão de voltar do celular.
 
-<img src="assets/editar-servico-celular.jpg" alt="Área para editar serviço salvo vista de um celular" text="Área para editar serviços em celulares" style="height: 500px"/>
+<div align="center">
+    <img src="assets/editar-servico-celular.jpg" alt="Área para editar serviço salvo vista de um celular" text="Área para editar serviços em celulares" style="height: 500px"/>
+</div>
 
 Para excluir a linha da tabela, basta selecionar a opção “Excluir serviço”, seja no celular ou no computador. Se o usuário desejar excluir todos os serviços adicionados na tabela, é necessário clicar no botão vermelho “Excluir serviços” presente no topo da tabela. Se desejar salvar os serviços no armazenamento local, o usuário deverá clicar no botão “Baixar Tabela” para uma nova janela abrir.
 
-<img src="assets/salvar-tabela.png" alt="Salvando a tabela" text="Salvando a tabela" style="width: 700px"/>
+<div align="center">
+    <img src="assets/salvar-tabela.png" alt="Salvando a tabela" text="Salvando a tabela" style="width: 700px"/>
+</div>
 
 No menu esquerdo, o usuário precisará localizar o campo “Impressora”, selecionar a opção “Salvar como PDF” e depois clicar em Salvar para o arquivo ser baixado. No celular, o processo é semelhante. Após tocar no botão para baixar a tabela, o usuário será redirecionado para uma outra janela na qual poderá salvar os dados localmente.
 
-<img src="assets/salvar-tabela-celular.jpg" alt="Salvando a tabela pelo celular" text="Salvando a tabela pelo celular" style="height: 500px"/>
+<div align="center">
+    <img src="assets/salvar-tabela-celular.jpg" alt="Salvando a tabela pelo celular" text="Salvando a tabela pelo celular" style="height: 500px"/>
+</div>
 
 6. Perfil do usuário
 
-<img src="assets/perfil-usuario.png" alt="Página de perfil do usuário" text="Página de perfil do usuário" style="width: 700px"/>
+<div align="center">
+    <img src="assets/perfil-usuario.png" alt="Página de perfil do usuário" text="Página de perfil do usuário" style="width: 700px"/>
+</div>
 
 Caso necessite, o usuário poderá trocar o seu nome de usuário ou a sua senha enquanto está dentro da sua conta no sistema.
 
@@ -82,7 +104,9 @@ Cada pasta do projeto é representada por “/nome_da_pasta”. Os textos com fu
     <li>MD: Arquivo de texto simples com uma sintaxe de formatação básica.</li>
 </ul>
 
-<img src="assets/diretorios.png" alt="Diretórios do projeto exibido em um mapa mental" text="Diretórios do projeto" style="height: 900px"/>
+<div align="center">
+    <img src="assets/diretorios.png" alt="Diretórios do projeto exibido em um mapa mental" text="Diretórios do projeto" style="height: 900px"/>
+</div>
 
 <ul>
     <li>/waveproject – É o diretório raiz do projeto, nele está contido todos os arquivos e pastas fundamentais para o funcionamento ideal do sistema.</li>
@@ -116,7 +140,9 @@ Para o armazenamento dos dados, o Cloud Firestore, um serviço oferecido pelo Go
 
 A organização dos dados no Cloud Firestore é por meio de documentos, organizados em coleções. Os documentos podem armazenar subcoleções ou campos que recebem valores. Fazendo uma analogia, seria algo como uma pergunta (que são os campos) e uma resposta (que são os valores) armazenados em documentos, que, por sua vez, ficam em pastas (que são as coleções).
 
-<img src="assets/firebase1.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
+<div align="center">
+    <img src="assets/firebase1.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
+</div>
 
 Na estruturação do banco de dados criado para o projeto, temos:
 
@@ -126,10 +152,16 @@ A coleção *Admin* representa o usuário administrador do sistema. Como haverá
 
 Quando o utilizador do sistema preencher os campos de dados e clicar no botão de adicionar serviço, as informações serão sincronizadas automaticamente com o banco de dados.
 
-<img src="assets/servicos-prestados.png" alt="Tabela do projeto com dados para exemplo" text="Tabela com dados para exemplo" style="width: 700px"/>
+<div align="center">
+    <img src="assets/servicos-prestados.png" alt="Tabela do projeto com dados para exemplo" text="Tabela com dados para exemplo" style="width: 700px"/>
+</div>
 
-<img src="assets/firebase2.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
+<div align="center">
+    <img src="assets/firebase2.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
+</div>
 
-<img src="assets/firebase3.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
+<div align="center">
+    <img src="assets/firebase3.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
+</div>
 
 Devido à organização feita durante o desenvolvimento do código, a subcoleção *services* irá criar um documento individual com um nome aleatório para o serviço adicionado. Esse documento irá conter as informações adicionadas pelo usuário e distribuídas dentro dos campos com os nomes categoria, cliente, *data_hora*, *funcionario* e *servico*.
