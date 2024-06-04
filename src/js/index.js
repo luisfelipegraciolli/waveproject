@@ -12,6 +12,10 @@ const botaoExcluir = document.getElementById("delete")
 const tbody = document.querySelector("#tabela-principal tbody")
 const semServicos = document.getElementById("sem-servicos")
 
+const linksHeader = document.querySelectorAll("a.admin")
+
+const cargoAdmin = JSON.parse(sessionStorage.getItem("admin"))
+
 let servicos = []
 try {
   servicos = (await getAdminServices()) ?? []
@@ -20,6 +24,12 @@ try {
 }
 
 exibirServicos(servicos, tbody, semServicos)
+
+if (!cargoAdmin) {
+  formNovoServico.remove()
+  botaoExcluir.parentElement.remove()
+  linksHeader.forEach((link) => link.remove())
+}
 
 const dataHoraInput = formNovoServico.data_hora
 
@@ -116,7 +126,6 @@ function filtrarServicos(e) {
           }
           return column.toLowerCase()
         })
-      console.log(linha)
       const match = linha
         .map((column) => column.includes(search))
         .some((value) => value === true)
@@ -172,27 +181,29 @@ function criarLinhaDaTabela(info) {
   const tr = document.createElement("tr")
   tr.className = "linha"
 
-  tr.popovertarget = info.id
-  const popover = criarPopover({
-    id: info.id,
-  })
-  document.body.appendChild(popover)
-  tr.addEventListener("contextmenu", (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-  })
+  if (cargoAdmin) {
+    tr.popovertarget = info.id
+    const popover = criarPopover({
+      id: info.id,
+    })
+    document.body.appendChild(popover)
+    tr.addEventListener("contextmenu", (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+    })
 
-  tr.addEventListener("auxclick", (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    const { pageX, pageY } = e
-    mostrarPopover({ pageX, pageY, popover })
-  })
+    tr.addEventListener("auxclick", (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      const { pageX, pageY } = e
+      mostrarPopover({ pageX, pageY, popover })
+    })
 
-  tr.addEventListener("dblclick", (e) => {
-    const { pageX, pageY } = e
-    mostrarPopover({ pageX, pageY, popover })
-  })
+    tr.addEventListener("dblclick", (e) => {
+      const { pageX, pageY } = e
+      mostrarPopover({ pageX, pageY, popover })
+    })
+  }
 
   const entries = Object.entries(info).filter((entry) => entry[0] != "id")
   for (let [key, value] of entries) {
