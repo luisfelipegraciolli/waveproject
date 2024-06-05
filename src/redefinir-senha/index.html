@@ -11,7 +11,12 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/redefinir-senha.css" />
-    <script src="../js/checa-cargo.js"></script>
+    <script>
+      const opt = confirm(
+        "Esta funcionalidade altera somente os dados do administrador do sistema. Deseja prosseguir?",
+      )
+      if (!opt) location.href = "/login"
+    </script>
     <script type="module" src="../js/checa-redefinir-senha.js"></script>
     <script defer type="module" src="../js/redefinir-senha.js"></script>
   </head>
