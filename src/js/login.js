@@ -25,8 +25,8 @@ try {
         primeiro_login: true,
       }),
       await postFuncionarioInfo({
-        usuario: "user",
-        senha: "user",
+        usuario: "funcionário",
+        senha: "5stododia",
       }),
     )
   }
