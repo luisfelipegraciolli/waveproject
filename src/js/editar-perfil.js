@@ -33,7 +33,7 @@ formUsuario.addEventListener("submit", async (e) => {
   }
 
   const opcao = confirm(
-    `Tem certeza que deseja mudar seu usuário para "${novo_usuario}"?`,
+    `Deseja mudar seu usuário para "${novo_usuario}"?`,
   )
 
   if (!opcao) {
@@ -67,7 +67,7 @@ formSenha.addEventListener("submit", async (e) => {
     return
   }
 
-  const opcao = confirm(`Tem certeza que deseja mudar sua senha?`)
+  const opcao = confirm(`Deseja mudar sua senha?`)
 
   if (!opcao) {
     alert("Mudança de senha cancelada.")
