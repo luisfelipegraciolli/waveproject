@@ -22,7 +22,7 @@ Ao todo, o projeto possui 6 páginas:
     <img src="assets/login.png" alt="Página de login" text="Página de login" style="width: 700px"/>
 </div>
 
-<br><br>
+<br>
 
 2. Definição de pergunta de segurança
 
@@ -30,7 +30,7 @@ Ao todo, o projeto possui 6 páginas:
     <img src="assets/definir-pergunta-seguranca.png" alt="Página para definir pergunta de segurança" text="Página para escolha da pergunta de segurança" style="width: 700px"/>
 </div>
 
-<br><br>
+<br>
 
 3. Recuperação de senha 1
 
@@ -38,7 +38,7 @@ Ao todo, o projeto possui 6 páginas:
     <img src="assets/redefinir-senha.png" alt="Primeira página de redefinição de senha" text="Primeira página de redefinição de senha" style="width: 700px"/>
 </div>
 
-<br><br>
+<br>
 
 4. Recuperação de senha 2
 
@@ -46,7 +46,7 @@ Ao todo, o projeto possui 6 páginas:
     <img src="assets/redefinir-senha-2.png" alt="Segunda página de redefinição de senha" text="Segunda página de redefinição de senha" style="width: 700px"/>
 </div>
 
-<br><br>
+<br>
 
 5. Página principal
 
@@ -93,6 +93,8 @@ O sistema possui dois perfis de usuário, sendo um para o administrador e outro 
 
 O perfil dos funcionários objetiva acessar a tabela para a visualização dos dados, apenas para observar os serviços lançados pelo administrador. Por conta disso, esse perfil não possui a possibilidade de alterar a senha, não possui uma página de perfil e também não possui permissão para adicionar ou editar serviços. Apenas a opção de baixar a tabela e pesquisar dados estarão disponíveis, conforme evidenciado na próxima imagem.
 
+<br>
+
 <div align="center">
     <img src="assets/funcperfil.png" alt="Perfil dos funcionários" text="Perfil dos funcionários" style="width: 700px"/>
 </div>
@@ -100,13 +102,13 @@ O perfil dos funcionários objetiva acessar a tabela para a visualização dos d
 ## Diretórios do Projeto
 A estrutura de diretórios do projeto foi elaborada de maneira que permita a facilidade de navegação entre os arquivos e também pensando em futuras alterações, como escalabilidade ou eventuais manutenções. Cada pasta do projeto é representada por “/nome_da_pasta”. Os textos com fundo azul escuro são referências para as pastas, enquanto textos com fundo azul claro são para arquivos.
 
-<br><br>
+<br>
 
 <div align="center">
     <img src="assets/diretorios.png" alt="Diretórios do projeto exibido em um mapa mental" text="Diretórios do projeto" style="height: 900px"/>
 </div>
 
-<br><br>
+<br>
 
 <ul>
     <li>/waveproject – É o diretório raiz do projeto, nele está contido todos os arquivos e pastas fundamentais para o funcionamento ideal do sistema.</li>
@@ -135,44 +137,40 @@ A estrutura de diretórios do projeto foi elaborada de maneira que permita a fac
 ## Armazenamento dos Dados
 Para o armazenamento dos dados, o Cloud Firestore, um serviço oferecido pelo Google Firebase de forma gratuita, foi implementado ao projeto. O Cloud Firestore é um banco de dados flexível e escalonável que armazena e sincroniza todas as informações inseridas em tempo real.
 
-<br><br>
+<br>
 
 <div align="center">
     <img src="assets/firebase1.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
 </div>
 
-<br><br>
+<br>
 
 Na estruturação do banco de dados criado para o projeto, há duas coleções que representam os usuários cadastrados no sistema:
 
 1. Primeira coleção
 
-<p style="text-align: center;">
-    ### *Admin* (Coleção) > *Info* (Documento) > *Services* (Subcoleção) ou campos
-</p>
+### *Admin* (Coleção) > *Info* (Documento) > *Services* (Subcoleção) ou campos
 
-<br><br>
+<br>
 
 <div align="center">
     <img src="assets/firebase2.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
 </div>
 
-<br><br>
+<br>
 
 A primeira coleção representa o usuário administrador do sistema. Ela armazena o documento *info*, que contém alguns campos responsáveis por informações relacionadas ao login, além de uma subcoleção chamada *services* que armazena os serviços adicionados pelo administrador.
 
 2. Segunda coleção
 
-<p style="text-align: center;">
-    *Employee* (Coleção) > *Info* (Documento) > Campos
-</p>
+### *Employee* (Coleção) > *Info* (Documento) > Campos
 
-<br><br>
+<br>
 
 <div align="center">
     <img src="assets/funcfirebase.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
 </div>
 
-<br><br>
+<br>
 
 A segunda coleção representa o perfil que os funcionários utilizarão para acessar o sistema. Como esse perfil foi criado para apenas permitir a visualização dos serviços lançados na tabela pelo administrador, sua estruturação no banco de dados é mais simples, armazenando apenas o nome de usuário e a senha do perfil.
