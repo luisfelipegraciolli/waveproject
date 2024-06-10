@@ -13,7 +13,7 @@ O sistema desenvolvido possui como finalidade o gerenciamento de serviços reali
     <li>Plataforma para hospedagem do sistema: Vercel.</li>
 </ul>
 
-## Apresentação e Funcionamento do Sistema
+## Apresentação do Sistema
 Ao todo, o projeto possui 6 páginas:
 
 1. Login
