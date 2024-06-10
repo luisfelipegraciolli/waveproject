@@ -112,7 +112,7 @@ A estrutura de diretórios do projeto foi elaborada de maneira que permita a fac
 
 <ul>
     <li>/waveproject – É o diretório raiz do projeto, nele está contido todos os arquivos e pastas fundamentais para o funcionamento ideal do sistema.</li>
-    <li>README.md – Fornece uma breve sinopse sobre o que se trata o projeto.</li>
+    <li>README.md – Fornece um detalhamento sobre o que se trata o projeto.</li>
     <li>prettierrc – Arquivo de configuração da extensão Prettier.</li>
     <li>/assets – Pasta que armazena todas as imagens utilizadas no arquivo README.md.</li>
     <li>/src – Armazena todos os códigos fonte do sistema.
