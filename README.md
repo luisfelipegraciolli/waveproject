@@ -22,11 +22,15 @@ Ao todo, o projeto possui 6 páginas:
     <img src="assets/login.png" alt="Página de login" text="Página de login" style="width: 700px"/>
 </div>
 
+<br>
+
 2. Definição de pergunta de segurança
 
 <div align="center">
     <img src="assets/definir-pergunta-seguranca.png" alt="Página para definir pergunta de segurança" text="Página para escolha da pergunta de segurança" style="width: 700px"/>
 </div>
+
+<br>
 
 3. Recuperação de senha 1
 
@@ -34,11 +38,15 @@ Ao todo, o projeto possui 6 páginas:
     <img src="assets/redefinir-senha.png" alt="Primeira página de redefinição de senha" text="Primeira página de redefinição de senha" style="width: 700px"/>
 </div>
 
+<br>
+
 4. Recuperação de senha 2
 
 <div align="center">
     <img src="assets/redefinir-senha-2.png" alt="Segunda página de redefinição de senha" text="Segunda página de redefinição de senha" style="width: 700px"/>
 </div>
+
+<br>
 
 5. Página principal
 
@@ -60,7 +68,9 @@ Depois, os dados da linha que será editada aparecerão nos campos do bloco “A
 
 Caso a ação seja feita em um celular, o usuário deverá clicar duas vezes na linha que deseja editar para o menu flutuante aparecer. Para cancelar a ação, basta tocar no botão de voltar do celular.
 
-Para excluir a linha da tabela, basta selecionar a opção “Excluir serviço”, seja no celular ou no computador. Se o usuário desejar excluir todos os serviços adicionados na tabela, é necessário clicar no botão vermelho “Excluir serviços” presente no topo da tabela.
+Para excluir a linha da tabela, basta selecionar a opção “Excluir serviço”, seja no celular ou no computador. Se o usuário desejar excluir todos os serviços adicionados na tabela, é necessário clicar no botão “Excluir serviços” presente no topo da tabela.
+
+<br>
 
 6. Perfil do usuário
 
@@ -78,9 +88,7 @@ O perfil dos funcionários objetiva acessar a tabela para a visualização dos d
 </div>
 
 ## Diretórios do Projeto
-A estrutura de diretórios do projeto foi elaborada de maneira que permita a facilidade de navegação entre os arquivos e também pensando em futuras alterações, como escalabilidade ou eventuais manutenções.
-
-Cada pasta do projeto é representada por “/nome_da_pasta”. Os textos com fundo azul escuro são referências para as pastas, enquanto textos com fundo azul claro são para arquivos.
+A estrutura de diretórios do projeto foi elaborada de maneira que permita a facilidade de navegação entre os arquivos e também pensando em futuras alterações, como escalabilidade ou eventuais manutenções. Cada pasta do projeto é representada por “/nome_da_pasta”. Os textos com fundo azul escuro são referências para as pastas, enquanto textos com fundo azul claro são para arquivos.
 
 <div align="center">
     <img src="assets/diretorios.png" alt="Diretórios do projeto exibido em um mapa mental" text="Diretórios do projeto" style="height: 900px"/>
@@ -121,7 +129,9 @@ Na estruturação do banco de dados criado para o projeto, há duas coleções q
 
 1. Primeira coleção
 
-### *Admin* (Coleção) > *Info* (Documento) > *Services* (Subcoleção) ou campos
+<h3 style="text-align: center;">
+    <i>Admin</i> (Coleção) > <i>Info</i> (Documento) > <i>Services</i> (Subcoleção) ou campos
+</h3>
 
 <div align="center">
     <img src="assets/firebase2.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
@@ -131,7 +141,9 @@ A primeira coleção representa o usuário administrador do sistema. Ela armazen
 
 2. Segunda coleção
 
-### *Employee* (Coleção) > *Info* (Documento) > Campos
+<h3 style="text-align: center;">
+    <i>Employee</i> (Coleção) > <i>Info</i> (Documento) > Campos
+</h3>
 
 <div align="center">
     <img src="assets/funcfirebase.png" alt="Organização dos dados no Cloud Firestore" text="Organização dos dados no Cloud Firestore" style="width: 700px"/>
